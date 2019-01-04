@@ -1,0 +1,2 @@
+# Genymotion_ARM_Translation
+适配 Genymotion_ARM_Translation 各个安卓版本
