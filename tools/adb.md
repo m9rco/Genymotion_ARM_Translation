@@ -98,6 +98,7 @@ sudo –s：在当前用户下，使用root权限执行adb命令
 ```
 adb logcat >> <指定文件路径>   将logcat信息保存在指定文件中
 adb logcat –help：查看logcat命令帮助文档
+adb logcat -s NET 查看网络通信信息
 ```
 
 每一条日志消息都有一个标记和优先级与其关联。
@@ -144,9 +145,7 @@ am kill-all    杀死所有后台进程
 
 ```
 pm path <包名>   查看apk安装在手机后的路径
-
 pm uninstall [-k] <包名>  卸载程序（-k：保留配置文件）
-
 pm clear <包名>    清除应用缓存数据
 ```
 
