@@ -23,6 +23,7 @@
 
 ## Android version mapping
 
+* [4.3](/package/Genymotion-ARM-Translation_for_4.3.zip)
 * [4.4](/package/Genymotion-ARM-Translation_for_4.4.zip)
 * [5.1](//package/Genymotion-ARM-Translation_for_5.1.zip)
 * [6.0](/package/Genymotion-ARM-Translation_for_6.0.zip)
@@ -37,9 +38,15 @@
   1. adb shell
   2. cd /sdcard/Download/
   3. sh /system/bin/flash-archive.sh /sdcard/Download/Genymotion-ARM-Translation.zip
+  4. adb reboot
 ```
 4. Resetting the Emulator
 
+## Install Abd
+
+```bash
+  brew cask install android-platform-tools
+```
 
 ## Samples and Common Problems
 ```

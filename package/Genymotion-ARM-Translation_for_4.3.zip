@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+<link href="https://assets.gitee.com/assets/projects/application-a1c87c144c3305b1a22576ead0829ced.css" media="screen" rel="stylesheet" type="text/css" />
+<head>
+<title>Genymotion-ARM-Translation_v1.1.zip · 千尺浪/分享 - Gitee</title>
+<link href="https://assets.gitee.com/assets/favicon-e87ded4710611ed62adc859698277663.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+<meta content='gitee.com/qianchilang/share git https://gitee.com/qianchilang/share.git' name='go-import'>
+<meta charset='utf-8'>
+<meta content='always' name='referrer'>
+<meta content='Gitee' property='og:site_name'>
+<meta content='Object' property='og:type'>
+<meta content='http://gitee.com/qianchilang/share/blob/master/Genymotion-ARM-Translation_v1.1.zip' property='og:url'>
+<meta content='https://gitee.com/logo_themecolor.png' itemprop='image' property='og:image'>
+<meta content='Genymotion-ARM-Translation_v1.1.zip · 千尺浪/分享 - Gitee' itemprop='name' property='og:title'>
+<meta content='码云(gitee.com)是开源中国推出的代码托管平台，支持 Git 和 SVN，提供免费的私有仓库托管。目前已有超过 300 万的开发者选择码云。' property='og:description'>
+<meta content='码云,代码托管,git,Git@OSC,gitee.com,开源,项目管理,版本控制,开源代码,代码分享,项目协作,开源项目托管,免费代码托管,Git代码托管,Git托管服务' name='Keywords'>
+<meta content='Genymotion-ARM-Translation' itemprop='description' name='Description'>
+<meta content="IE=edge" http-equiv="X-UA-Compatible" />
+<meta content="authenticity_token" name="csrf-param" />
+<meta content="XXaQTnl2U+nKRKsdL25SK3gzuanWXOjLiObWLttWQEI=" name="csrf-token" />
+
+<link href="https://assets.gitee.com/assets/application-113bc08fcc3c72a99c467c021696c95f.css" media="screen" rel="stylesheet" type="text/css" />
+<script src="https://assets.gitee.com/assets/application-8ad6c5cdde3b57127064733fe4cf0b0f.js" type="text/javascript"></script>
+<script src="https://assets.gitee.com/assets/lib/jquery.timeago.en-7054cad705e8cd01115935aa73a944b9.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+//<![CDATA[
+window.gon = {};gon.locale="en";gon.tour_env={"current_user":null,"controller_path":"blob","action_name":"show","original_url":"http://gitee.com/qianchilang/share/blob/master/Genymotion-ARM-Translation_v1.1.zip"};gon.http_clone="https://gitee.com/qianchilang/share.git";gon.user_project="qianchilang/share";gon.manage_branch="Manage branch";gon.manage_tag="Manage tag";gon.enterprise_id=0;gon.ref="master";
+//]]>
+</script>
+<script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript"></script>
+<script>
+  var title = document.title.replace(/( - Gitee| - 码云)$/, '')
+      imgUrl = '';
+  
+  document.addEventListener('DOMContentLoaded', function(event) {
+    var imgUrlEl = document.querySelector('.readme-box .markdown-body > img, .readme-box .markdown-body :not(a) > img');
+    imgUrl = imgUrlEl && imgUrlEl.getAttribute('src');
+  
+    if (!imgUrl) {
+      imgUrlEl = document.querySelector('meta[itemprop=image]');
+      imgUrl = imgUrlEl && imgUrlEl.getAttribute('content'); 
+      imgUrl = imgUrl || "https://gitee.com/logo_themecolor.png";
+    }
+  
+    wx.config({
+      debug: false,
+      appId: "wxff219d611a159737",
+      timestamp: "1546589040",
+      nonceStr: "12583cc89eb5979f88e97d1dd49ca685",
+      signature: "5a9e2439cb6b911ec371dff4cc2fafd1ecb7faf9",
+      jsApiList: [
+        'onMenuShareTimeline',
+        'onMenuShareAppMessage'
+      ]
+    });
+  
+    wx.ready(function () {
+      wx.onMenuShareTimeline({
+        title: title, // 分享标题
+        link: "https://gitee.com/qianchilang/share/blob/master/Genymotion-ARM-Translation_v1.1.zip", // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: imgUrl // 分享图标
+      });
+      wx.onMenuShareAppMessage({
+        title: title, // 分享标题
+        link: "https://gitee.com/qianchilang/share/blob/master/Genymotion-ARM-Translation_v1.1.zip", // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        desc: document.querySelector('meta[name=Description]').getAttribute('content'),
+        imgUrl: imgUrl // 分享图标
+      });
+    });
+    wx.error(function(res){
+      console.error('err', res)
+    });
+  })
+</script>
+
+<script type='text/x-mathjax-config'>
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [["$$","$$"],["\\[","\\]"]],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+    ignoreClass: "container|files",
+    processClass: "markdown-body"
+  }
+});
+</script>
+<script src="https://gitee.com/uploads/resources/MathJax-2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+<script>
+  var messages = {
+    'zh-CN': {
+      addResult: '增加 <b>{term}</b>',
+      count: '已选择 {count}',
+      maxSelections: '最多 {maxCount} 个选择',
+      noResults: '未找到结果',
+      serverError: '连接服务器时发生错误'
+    },
+    'zh-TW': {
+      addResult: '增加 <b>{term}</b>',
+      count: '已選擇 {count}',
+      maxSelections: '最多 {maxCount} 個選擇',
+      noResults: '未找到結果',
+      serverError: '連接服務器時發生錯誤'
+    }
+  }
+  
+  if (messages[gon.locale]) {
+    $.fn.dropdown.settings.message = messages[gon.locale]
+  }
+</script>
+
+<!--[if lt IE 10]>
+<script>
+    window.location.href = "/incompatible.html";
+</script>
+<![endif]-->
+</head>
+
+<body class='git-project lang-en'>
+<script src="https://assets.gitee.com/assets/projects/app-2ea425928329ffb6ff93651a6881815c.js" type="text/javascript"></script>
+<header class='common-header fixed noborder' id='git-header-nav'>
+<div class='ui container'>
+<div class='ui menu'>
+<div class='item gitosc-logo'>
+<a href="/"><img class='ui inline image' height='28' src='/logo-en.svg?20171024' width='95'>
+<img class='ui inline black image' height='28' src='/logo-black-en.svg?20171024' width='95'>
+</a></div>
+<a href="/explore" class="item " title="Open Source">Open Source
+</a><a href="/enterprises" class="item " title="Enterprise">Enterprise
+<sup class='ui red label'>
+特惠
+</sup>
+</a><a href="/education" class="item " title="Education">Education
+</a><a href="https://blog.gitee.com/" class="item" id="gitee-blog" target="_blank" title="Blog">Blog
+</a><div class='right menu userbar' id='git-nav-user-bar'>
+<div class='item'>
+<form accept-charset="UTF-8" action="/search" autocomplete="on" data-text-filter="Invalid search content" data-text-require="Search keywords can not be less than one" id="navbar-search-form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+<div class='ui mini fluid input'>
+<input id="navbar-search-input" name="q" placeholder="Search projects and gists..." type="text" value="" />
+<input id="navbar-search-type" name="type" type="hidden" />
+</div>
+</form>
+
+
+</div>
+<a href="/signup" class="item">Sign up
+</a><a href="/login" class="item">Sign in
+</a><script>
+  $('.destroy-user-session').click(function() {
+    $.cookie('access_token', null, { path: '/' });
+  })
+</script>
+
+</div>
+</div>
+</div>
+</header>
+
+<script>
+  Gitee.initNavbar()
+  Gitee.initRepoRemoteWay()
+</script>
+
+<!--[if lt IE 10]>
+<script>
+  window.location.href = "/incompatible.html"
+</script>
+<![endif]-->
+
+<div class='fixed-notice-messages'>
+<div class='ui container'>
+<div class='flash-messages' id='messages-container'></div>
+</div>
+<script>
+  (function() {
+    $(function() {
+      var $error_box, alertTip, notify_content, notify_options, template;
+  
+      template = '<div data-notify="container" class="ui {0} message" role="alert">' + '<i data-notify="dismiss" class="close icon"></i>' + '<span data-notify="message">{2}</span>' + '</div>';
+      notify_content = null;
+      notify_options = {};
+      alertTip = '';
+      $error_box = $(".flash_error.flash_error_box");
+      if (notify_options.type === 'error' && $error_box.length > 0 && !$.isEmptyObject(notify_content.message)) {
+        if (notify_content.message === 'captcha_fail') {
+          alertTip = "The captcha is incorrect";
+        } else if (notify_content.message === 'not_found_in_database') {
+          alertTip = "Invalid email or password.";
+        } else if (notify_content.message === 'not_found_and_show_captcha') {
+          alertTip = "Invalid email or password.";
+        } else {
+          alertTip = notify_content.message;
+        }
+        return $error_box.html(alertTip).show();
+      } else if (notify_content) {
+        notify_options.delay = 3000;
+        notify_options.template = template;
+        notify_options.offset = {
+          x: 10,
+          y: 30
+        };
+        notify_options.element = '#messages-container';
+        return $.notify(notify_content, notify_options);
+      }
+    });
+  
+  }).call(this);
+</script>
+
+</div>
+<script>
+  (function() {
+    $(function() {
+      var setCookie;
+  
+      setCookie = function(name, value) {
+        $.cookie(name, value, {
+          path: '/',
+          expires: 365
+        });
+      };
+      $('#remove-bulletin').on('click', function() {
+        setCookie('remove_bulletin', "gitee-maintain-1545272544");
+        $('#git-bulletin').hide();
+      });
+      $('#remove-member-bulletin').on('click', function() {
+        setCookie('remove_member_bulletin', "gitee_member_bulletin");
+        $(this).parent().hide();
+      });
+      return $('#remove-gift-bulletin').on('click', function() {
+        setCookie('remove_gift_bulletin', "gitee-gift-bulletin");
+        $(this).parent().hide();
+      });
+    });
+  
+  }).call(this);
+</script>
+
+<div class='site-content'>
+<div class='git-project-header'>
+<div class='fixed-notice-messages'>
+<div class='ui info icon floating message green' id='fetch-ok' style='display: none'>
+<div class='content'>
+<div class='header status-title'>
+<i class='info icon status-icon'></i>
+Fetch the repository succeeded.
+</div>
+</div>
+</div>
+<div class='ui info icon floating message error' id='fetch-error' style='display: none'>
+<div class='content'>
+<div class='header status-title'>
+<i class='info icon status-icon'></i>
+<span class='error_msg'></span>
+</div>
+</div>
+</div>
+</div>
+<div class='ui container'>
+
+<div class='git-project-header-details'>
+<div class='git-project-header-container'>
+<h2 class='git-project-title'>
+<i class="project-icon iconfont icon-project-public" title="This is a public repository"></i> <a href="/qianchilang" class="author" title="千尺浪">千尺浪</a> / <a href="/qianchilang/share" class="repository" style="padding-bottom: 0px" target="" title="分享">分享</a>
+
+<input id="project_title" name="project_title" type="hidden" value="千尺浪/分享" />
+</h2>
+<div class='git-project-header-actions'>
+<div class='ui tiny modal project-donate-modal' id='project-donate-modal'>
+<i class='iconfont icon-close close'></i>
+<div class='header'>Donate</div>
+<div class='content'>
+This author have not enable Donate yet.
+</div>
+<div class='actions'>
+<a class='ui blank button cancel'>Cancel</a>
+<a class='ui orange ok button' href='/notifications/messages/1750549'>Send Message</a>
+</div>
+</div>
+<div class='ui small modal wepay-qrcode'>
+<i class='iconfont icon-close close'></i>
+<div class='header'>
+扫描微信二维码支付
+<span class='wepay-cash'></span>
+</div>
+<div class='content weqcode-center'>
+<img id='wepay-qrcode' src=''>
+</div>
+<div class='actions'>
+<div class='ui cancel blank button'>取消</div>
+<div class='ui ok orange button'>
+支付完成
+</div>
+</div>
+</div>
+<div class='ui mini modal' id='confirm-alipay-modal'>
+<div class='header'>支付提示</div>
+<div class='content'>
+将跳转至支付宝完成支付
+</div>
+<div class='actions'>
+<div class='ui approve orange button'>
+确定
+</div>
+<div class='ui blank cancel button'>
+取消
+</div>
+</div>
+</div>
+
+<span class='ui basic buttons watch-container'>
+<a href="/login" class="ui button watch" title="You must be signed in to watch a repository"><i class='iconfont icon-watch'></i>
+Watch
+</a><a href="/qianchilang/share/watchers" class="ui button action-social-count" title="4">4
+</a></span>
+<span class='ui basic buttons star-container'>
+<a href="/login" class="ui button star" title="You must be signed in to star a repository"><i class='iconfont icon-star'></i>
+Star
+</a><a href="/qianchilang/share/stargazers" class="ui button action-social-count" title="11">11
+</a></span>
+<span class='ui basic buttons fork-container' data-content='You do not have the permission to fork this repository'>
+<a href="/login" class="ui button fork "><i class='iconfont icon-fork'></i>
+Fork
+</a><a href="/qianchilang/share/members" class="ui button action-social-count" title="10">10
+</a></span>
+</div>
+</div>
+</div>
+</div>
+<div class='row' id='import-result-message' style='padding-top: 0px; display: none'>
+<div class='sixteen wide column'>
+<div class='ui icon yellow message status-color'>
+<i class='info icon status-icon' style='width:60px;padding-right:12px;'></i>
+<i class='close icon'></i>
+<div class='header status-title'>
+Sync status
+</div>
+<span class='status-message'></span>
+</div>
+</div>
+</div>
+<div class='ui small modal' id='modal-fork-project'>
+<i class='icon-close iconfont close'></i>
+<div class='header'>
+Fork this repository
+</div>
+<div class='content'>
+<div class='fork-info-content'>
+<div class='ui segment fork_project_loader'>
+<div class='ui active inverted dimmer'>
+<div class='ui text loader'>Loading</div>
+</div>
+</div>
+</div>
+</div>
+<div class='actions fork-action hide'>
+<a class='cancel'>&emsp;Cancel&emsp;</a>
+<div class='ui large button orange ok'>&emsp;Confirm&emsp;</div>
+</div>
+</div>
+<script>
+  (function() {
+    $('.fork-container').popup({
+      inline: true,
+      hoverable: true,
+      position: 'bottom left'
+    });
+  
+  }).call(this);
+</script>
+<script>
+  (function() {
+    $('#modal-fork-project').modal({
+      transition: 'fade'
+    });
+  
+    $('.checkbox.sync-wiki').checkbox();
+  
+  }).call(this);
+</script>
+<style>
+  i.loading{-webkit-animation:icon-loading 1.2s linear infinite;animation:icon-loading 1.2s linear infinite}.qrcode_cs{float:left}.check-sync-wiki{float:left;height:28px;line-height:28px}.check-sync-wiki .sync-wiki-warn{color:#e28560}
+</style>
+<script>
+  $('.metrics-radar').dropdown({ action: 'nothing' });
+</script>
+
+<div class='git-project-nav'>
+<div class='ui container'>
+<div class='ui secondary pointing menu'>
+<a href="/qianchilang/share" class="item active"><i class='iconfont icon-code'></i>
+Code
+</a><a href="/qianchilang/share/issues" class="item "><i class='iconfont icon-issue'></i>
+Issues
+<span class='ui mini circular label'>
+0
+</span>
+</a><a href="/qianchilang/share/pulls" class="item "><i class='iconfont icon-pull-request'></i>
+Pull Requests
+<span class='ui mini circular label'>
+0
+</span>
+</a><a href="/qianchilang/share/attach_files" class="item "><i class='iconfont icon-annex'></i>
+Attachments
+<span class='ui mini circular label'>0</span>
+</a><a href="/qianchilang/share/wikis" class="item "><i class='iconfont icon-wiki'></i>
+Wiki
+<span class='ui mini circular label'>
+0
+</span>
+</a><a href="/qianchilang/share/graph/master" class="item  "><i class='iconfont icon-statistics'></i>
+Statistics
+</a><div class='item project-devops-item'>
+<div class='ui pointing top right dropdown project-devops-dropdown'>
+<div class='text'>
+<i class='iconfont icon-devops'></i>
+DevOps
+</div>
+<i class='dropdown icon'></i>
+<div class='menu' style='display:none'>
+<a href="https://gitee.com/help/articles/4193" class="item" target="_blank"><img alt="Jenkins_for_gitee" src="https://assets.gitee.com/assets/jenkins_for_gitee-a079e18b0276e2d1230294a470364e7b.png" />
+<div class='item-title'>
+Jenkins for Gitee
+</div>
+</a><a href="/qianchilang/share/paas/code_pipeline" class="item"><img alt="Code_pipeline" src="https://assets.gitee.com/assets/code_pipeline-502dbffc863fcc0b6867628c9e8e163e.svg" />
+<div class='item-title'>
+Aliyun CodePipeline
+</div>
+</a><a href="/qianchilang/share/paas/huaweicloud_swr" class="item"><img alt="Huaweirqy" src="https://assets.gitee.com/assets/huaweirqy-c24d1adc35c0ecb2bc1e39f6e033835c.png" />
+<div class='item-title'>
+HuaWei Cloud
+</div>
+</a><a href="/qianchilang/share/paas/huaweicloud_cse" class="item"><img alt="Hauweiwfw" src="https://assets.gitee.com/assets/hauweiwfw-9edbcf60ca0a5d0de81d2fc804efa9ac.png" />
+<div class='item-title'>
+HuaWei ServiceStage Cloud
+</div>
+</a><a href="/qianchilang/share/paas/tencent_hub" class="item"><img alt="Tencent_hub" src="https://assets.gitee.com/assets/tencent_hub-e263083dfb38e2149d8a9eca5347f4d5.png" />
+<div class='item-title'>
+Tencent Hub
+</div>
+</a><a href="/qianchilang/share/paas/select_platform" class="item"><img alt="Mopaas_mini" src="https://assets.gitee.com/assets/mopaas_mini-72f0d5aeae31630ae89f624dfb0c23ca.png" />
+<div class='item-title'>
+MoPaaS V3
+</div>
+</a></div>
+</div>
+</div>
+<div class='item'>
+<div class='ui pointing top right dropdown git-project-service'>
+<div class='text'>
+<i class='iconfont icon-service'></i>
+Service
+</div>
+<i class='dropdown icon'></i>
+<div class='menu' style='display:none'>
+<a href="/qianchilang/share/pages" class="item"><img alt="Gitee" src="https://assets.gitee.com/assets/gitee-d6fb391be28450a587df71dda0325f60.png" />
+<div class='item-title'>
+Gitee Pages
+</div>
+</a><a href="/qianchilang/share/javadoc" class="item"><img alt="Maven" src="https://assets.gitee.com/assets/maven-aea8b4f12e957c8c67de9c6fc83d27e6.png" />
+<div class='item-title'>
+JavaDoc
+</div>
+</a><a href="/qianchilang/share/phpdoc" class="item"><img alt="Phpdoc" src="https://assets.gitee.com/assets/phpdoc-301b1db815d856e5e3de263f04f69e03.png" />
+<div class='item-title'>
+PHPDoc
+</div>
+</a><a href="/qianchilang/share/quality_analyses?platform=sonar_qube" class="item"><img alt="Sonar_mini" src="https://assets.gitee.com/assets/sonar_mini-6270e37950512a0bf0a05ac5b9b11243.png" />
+<div class='item-title'>
+Quality analysis
+</div>
+</a><a href="/qianchilang/share/quality_analyses?platform=codesafe" class="item"><img alt="Dmws" src="https://assets.gitee.com/assets/dmws-7fce33f3494048913a196a40f998a9ba.png" />
+<div class='item-title'>
+Code detection
+</div>
+</a><button class='ui orange basic button quit-button' id='quiting-button'>
+Got it, do not show this again.
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  $('.git-project-nav .ui.dropdown').dropdown({ action: 'nothing' });
+</script>
+<style>
+  .git-project-nav i.checkmark.icon {
+    color: green;
+  }
+  #quiting-button {
+    display: none;
+  }
+</style>
+<script>
+  isSignIn = false
+  isClickGuide = false
+  $('#git-versions.dropdown').dropdown();
+  $.ajax({
+    url:"/qianchilang/share/access/add_access_log",
+    type:"GET"
+  });
+  $('#quiting-button').on('click',function() {
+    $('.git-project-service').click();
+    if (isSignIn) {
+      $.post("/projects/set_service_guide")
+    }
+    $.cookie("Serve_State", true, { expires: 3650, path: '/'})
+    $('#quiting-button').hide();
+  });
+  if (!(isClickGuide || $.cookie("Serve_State") == 'true')) {
+    $('.git-project-service').click()
+    $('#quiting-button').show()
+  }
+</script>
+
+</div>
+<div class='ui container'>
+<div class='register-guide'>
+<div class='register-container'>
+<div class='regist'>
+Sign up for free
+</div>
+<div class='description'>
+Explore and code with more than 2 million developers，Free private repositories ！：）
+</div>
+<a href="/signup?from=project-guide" class="ui orange button free-registion">Sign up</a>
+<div class='login'>
+Already have an account?
+<a href="/login?from=project-guide">Sign in</a>
+</div>
+</div>
+</div>
+
+<div class='git-project-content-wrapper'>
+<div class='git-project-content' id='git-project-content'>
+<div class='row' id='git-detail-clone'>
+<div class='git-project-desc-wrapper'>
+<div class='git-project-desc'>
+<div class='project-introduce'>
+<span class='git-project-desc-text'>
+Genymotion-ARM-Translation
+</span>
+<a class='hide spread' href='javascript:void(0);'>
+spread
+<i class='caret down icon'></i>
+</a>
+<a class='retract hide' href='javascript:void(0);'>
+retract
+<i class='caret up icon'></i>
+</a>
+<p class='git-project-homepage'>
+<a href="https://gitee.com/qianchilang/share" id="homepage" rel="nofollow" target="_blank">https://gitee.com/qianchilang/share</a>
+</p>
+</div>
+</div>
+<div class='git-project-desc-edit flex'>
+<div class='sixty-percent ui small input'>
+<input name='project[description]' placeholder='Description' type='text' value='Genymotion-ARM-Translation'>
+</div>
+<div class='twenty-percent ui small input'>
+<input data-regex-value='(^$)|(^(http|https):\/\/(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]).*)|(^(http|https):\/\/[a-zA-Z0-9]+([_\-\.]{1}[a-zA-Z0-9]+)*\.[a-zA-Z]{2,10}(:[0-9]{1,10})?(\/.*)?$)' name='project[homepage]' placeholder='Homepage(eg: https://gitee.com)' type='text' value='https://gitee.com/qianchilang/share'>
+</div>
+<div class='zero-percent'>
+<button class='ui orange button btn-save'>
+Save
+</button>
+<button class='ui button btn-cancel-edit'>
+Cancel
+</button>
+</div>
+</div>
+<script>
+  $(function () {
+    new ProjectInfoEditor({
+      el: '.git-project-desc-wrapper',
+      homepage: "https://gitee.com/qianchilang/share",
+      description: "Genymotion-ARM-Translation",
+      url: "/qianchilang/share/update_description",
+      modalHelper: Gitee.modalHelper
+    })
+  })
+</script>
+</div>
+
+</div>
+<div class='git-project-summary' id='git-project-summary'>
+<div class='summary-viewer'>
+<div class='viewer-wrapper'>
+<ul>
+<li>
+<a href="/qianchilang/share/commits/master"><i class='iconfont icon-commit'></i>
+<b>7</b>
+commits
+</a></li>
+<li>
+<a href="/qianchilang/share/branches"><i class='iconfont icon-branches'></i>
+<b>1</b>
+branches
+</a></li>
+<li>
+<a href="/qianchilang/share/tags"><i class='iconfont icon-tag'></i>
+<b>0</b>
+tags
+</a></li>
+<li>
+<a href="/qianchilang/share/releases"><i class='iconfont icon-release'></i>
+<b>0</b>
+releases
+</a></li>
+<li>
+<a href="/qianchilang/share/contributors?ref=master"><i class='iconfont icon-collaborators'></i>
+<b class='contributor-count' data-url='/qianchilang/share/contributors_count?ref=master'></b>
+<span class='contributor-text'>
+Fetching contributors
+</span>
+</a></li>
+</ul>
+<ul>
+</ul>
+</div>
+</div>
+<div class='summary-languages' title='Click for language details'>
+</div>
+
+</div>
+<div class='git-project-bread' id='git-project-bread'>
+<div class='git-project-right-actions float-right'>
+<div class='d-inline-block' id='git-project-tree-actions'>
+
+</div>
+<div class='ui orange button dropdown' id='btn-dl-or-clone'>
+Clone or download
+<i class='dropdown icon'></i>
+</div>
+<div class='ui popup bottom right transition hidden git-project-download-panel'>
+<div class='ui small secondary pointing menu'>
+<a class='item active' data-type='http' data-url='https://gitee.com/qianchilang/share.git'>HTTPS</a>
+<a class='item' data-type='ssh' data-url='git@gitee.com:qianchilang/share.git'>SSH</a>
+</div>
+<div class='ui fluid right labeled small input'>
+<input id="project_clone_url" name="project_clone_url" onclick="focus();select()" readonly="readonly" type="text" value="https://gitee.com/qianchilang/share.git" />
+<div class='ui basic label'>
+<div class='ui small basic orange button' data-clipboard-target='#project_clone_url' id='btn-copy-clone-url'>
+Copy
+</div>
+</div>
+</div>
+<hr>
+<a href="/login?url_to=/qianchilang/share/repository/archive/master" class="ui fluid download link button" data-confirm="You must be signed in to download, Are you sure to login?
+Highly recommend: git clone &quot;https://gitee.com/qianchilang/share.git&quot;"><i class='icon download'></i>
+Download ZIP
+</a><hr>
+
+</div>
+<script>
+  (function() {
+    var $btnCopy, $input, $item, $panel, clipboard, remoteWay;
+  
+    $input = $('#project_clone_url');
+  
+    remoteWay = '';
+  
+    clipboard = new Clipboard('#btn-copy-clone-url');
+  
+    $panel = $('.git-project-download-panel');
+  
+    $btnCopy = $('#btn-copy-clone-url');
+  
+    $panel.find('.menu > .item').on('click', function() {
+      var $item;
+  
+      $item = $(this).addClass('active');
+      $item.siblings().removeClass('active');
+      $input.val($item.attr('data-url'));
+      return $.cookie('remote_way', $item.attr('data-type'), {
+        expires: 365,
+        path: '/'
+      });
+    });
+  
+    $('#btn-dl-or-clone').popup({
+      popup: $panel,
+      position: 'bottom right',
+      on: 'click',
+      lastResort: 'bottom right',
+      maxSearchDepth: "10"
+    });
+  
+    $item = null;
+  
+    if (remoteWay) {
+      $item = $panel.find('.item[data-type="' + remoteWay + '"]');
+    }
+  
+    if (!$item || $item.length < 1) {
+      $item = $panel.find('.ui.menu .item').eq(0);
+    }
+  
+    $item.addClass('active').siblings().removeClass('active');
+  
+    $input.val($item.attr('data-url'));
+  
+    clipboard.on('success', function() {
+      $btnCopy.popup({
+        content: 'Copied',
+        position: 'right center',
+        onHidden: function() {
+          return $btnCopy.popup('destroy');
+        }
+      });
+      return $btnCopy.popup('show');
+    });
+  
+    clipboard.on('error', function() {
+      $btnCopy.popup({
+        content: 'Copy failed. Please copy it manually',
+        position: 'right center',
+        onHidden: function() {
+          return $btnCopy.popup('destroy');
+        }
+      });
+      return $btnCopy.popup('show');
+    });
+  
+  }).call(this);
+</script>
+
+</div>
+<div class='ui horizontal list'>
+<div class='item git-project-branch-item'>
+<input id="path" name="path" type="hidden" value="Genymotion-ARM-Translation_v1.1.zip" />
+<div class='ui top left pointing dropdown gradient button dropdown-has-tabs' id='git-project-branch'>
+<input id="ref" name="ref" type="hidden" value="master" />
+<div class='default text'>
+master
+</div>
+<i class='dropdown icon'></i>
+<div class='menu'>
+<div class='ui left icon search input'>
+<i class='iconfont icon-search'></i>
+<input placeholder='Search branch' type='text'>
+</div>
+<div class='tab-menu'>
+<div class='tab-menu-action' data-tab='branches'>
+<a href="/qianchilang/share/branches/recent" class="ui link button">Manage</a>
+</div>
+<div class='tab-menu-action' data-tab='tags'>
+<a href="/qianchilang/share/tags" class="ui link button">Manage</a>
+</div>
+<div class='tab-menu-item' data-placeholder='Search branches' data-tab='branches'>
+Branches (1)
+</div>
+</div>
+<div class='tab scrolling menu' data-tab='branches'>
+<div class='item' data-value='master'>master</div>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+    Gitee.initTabsInDropdown($('#git-project-branch').dropdown({
+      fullTextSearch: true,
+      onChange: function (value, text) {
+        var path = $('#path').val();
+        var href = ['/qianchilang/share/tree', value, path].join('/');
+        window.location.href = href;
+      }
+    }));
+  })
+</script>
+
+</div>
+<div class='item' id='git-project-root-actions'>
+<div class='repo-index repo-none-index' style='margin-left:0px;'>
+<div class='ui horizontal list repo-action-list'>
+<div class='item'>
+<div class='ui pointing right top dropdown gradient button' id='git-project-file'>
+<div class='text'>File</div>
+<i class='dropdown icon'></i>
+<div class='menu'>
+<div class='disabled item'>New file</div>
+<div class='disabled item'>Upload file</div>
+<a class='item repo-action' id='search-files'>
+Search
+</a>
+</div>
+</div>
+</div>
+<div class='item'>
+<a href="/-/ide/project/qianchilang/share/edit/master" class="ui gradient button webide" target="_blank">Web IDE</a>
+</div>
+<div class='item'>
+<a href="/qianchilang/share/widget" class="ui gradient button repo-action"><i class='iconfont icon-widget icon-orange'></i>
+Widget
+</a></div>
+</div>
+<script>
+  $('#git-project-file').dropdown({ action: 'hide' });
+</script>
+</div>
+
+</div>
+<div class='item breadcrumb_path path-breadcrumb-contrainer' id='git-project-breadcrumb'>
+<div class='ui breadcrumb path project-path-breadcrumb' id='path-breadcrumb'>
+<a href="/qianchilang/share/tree/master" class="section repo-name" data-direction="back" style="font-weight: bold">share
+</a><div class='divider'>
+/
+</div>
+<strong>
+Genymotion-ARM-Translation_v1.1.zip
+</strong>
+</div>
+
+
+</div>
+</div>
+</div>
+<style>
+  .ui.dropdown .menu>.header{text-transform:none}
+</style>
+<script>
+  $(document).ready(function () {
+    var $gitProjectSummary = $('#git-project-summary');
+    var $gitProjectLanguages = $gitProjectSummary.find('.summary-languages');
+    var $statsSwitcherWrapper = $gitProjectSummary.find('.viewer-wrapper');
+    var $contributorCount = $gitProjectSummary.find('.contributor-count');
+    var $contributorText = $gitProjectSummary.find('.contributor-text');
+    var contributorsCountUrl = $contributorCount.data('url');
+  
+    $gitProjectLanguages.on('click', function() {
+      $statsSwitcherWrapper.toggleClass('js-lang');
+    });
+  
+    $.ajax({
+      url: contributorsCountUrl,
+      method: 'GET',
+      success: function(data) {
+        if (data.status === 1) {
+          $contributorCount.text(data.contributors_count);
+          $contributorText.text('contributors')
+        } else {
+          $contributorText.text('Fetching failed')
+        }
+      }
+    });
+    var $tip = $('#apk-download-tip');
+    if (!$tip.length) {
+      return;
+    }
+    $tip.find('.btn-close').on('click', function () {
+      $tip.slideUp();
+    });
+  });
+  (function(){
+    function pathAutoRender() {
+      var $parent = $('#git-project-bread'),
+          $child = $('#git-project-bread').children('.ui.horizontal.list'),
+          mainWidth = 0;
+      $child.each(function (i,item) {
+        mainWidth += $(item).width()
+        });
+      $('.breadcrumb.path.fork-path').remove();
+      if (mainWidth > 995) {
+        $('#path-breadcrumb').hide();
+        $parent.append('<div class="ui breadcrumb path fork-path">' + $('#path-breadcrumb').html() + '<div/>')
+      } else {
+        $('#path-breadcrumb').show();
+      }
+    }
+    window.pathAutoRender = pathAutoRender;
+    pathAutoRender();
+  })();
+</script>
+
+<div class='row column tree-holder' id='tree-holder'>
+<div class='tree-content-holder' id='tree-content-holder'>
+<div class='file_holder'>
+<div class='file_title'>
+<div class='blob-header-title'>
+<div class='blob-description'>
+<i class='iconfont icon-readme'></i>
+<span class='file_name' title='Genymotion-ARM-Translation_v1.1.zip'>
+Genymotion-ARM-Translation_v1.1.zip
+</span>
+<small>8.96 MB</small>
+</div>
+<div class='options'><div class='ui mini buttons basic'>
+<a href="/qianchilang/share/raw/master/Genymotion-ARM-Translation_v1.1.zip" class="ui button edit-raw" target="_blank">Raw</a>
+<a href="/qianchilang/share/commits/master/Genymotion-ARM-Translation_v1.1.zip" class="ui button edit-history">History</a>
+</div>
+<script>
+  "use strict";
+  try {
+    if((gon.wait_fork!=undefined && gon.wait_fork==true) || (gon.wait_fetch!=undefined && gon.wait_fetch==true)){
+      $('.edit-blob').popup({content:"This repository is doing something background, pleace try again later", on: 'hover', delay: { show: 200, hide: 200 }});
+      $('.edit-blob').click(function(e){
+        e.preventDefault();
+      })
+    }
+  
+    var setUrl = function() {
+      var params = window.location.search
+      if (params==undefined || $.trim(params).length==0) return;
+      $('span.options').children('.basic').find('a').each(function(index,ele){
+        var origin_href = $(ele).attr('href');
+        if (origin_href!="#" && origin_href.indexOf('?') == -1){
+          $(ele).attr('href',origin_href+params);
+        }
+      });
+    }
+  
+    setUrl();
+  
+    var clipboard = null,
+        $btncopy  = $("#copy-text");
+  
+    clipboard = new Clipboard("#copy-text", {
+      text: function(trigger) {
+        return $("#blob_raw").val();
+      }
+    })
+  
+    clipboard.on('success', function(e) {
+      $btncopy.popup('hide');
+      $btncopy.popup('destroy');
+      $btncopy.popup({content: 'Copied', position: 'bottom center'});
+      $btncopy.popup('show');
+    })
+  
+    clipboard.on('error', function(e) {
+      var giteeModal = new GiteeModalHelper({okText: 'Confirm'});
+      giteeModal.alert("Copy", 'Copy failed. Please copy it manually');
+    })
+  
+    $(function() {
+      $btncopy.popup({
+        content: 'Copy to clipboard',
+        position: 'bottom center'
+      })
+    })
+  
+  } catch (error) {
+    console.log('blob/action error:' + error);
+  }
+</script>
+</div>
+</div>
+<div class='contributor-description'><span class='recent-commit' style='margin-top: 0.7rem'>
+<a href="/qianchilang" class="commit-author-link">千尺浪</a>
+<span>authored</span>
+<span class='timeago commit-date' title='2018-10-10 17:35:55 +0800'>
+2018-10-10 17:35
+</span>
+.
+<a href="/qianchilang/share/commit/efc8d7590a0ad5542e42aa72b30177ecf884d212">ARM_Translation</a>
+</span>
+</div>
+</div>
+<div class='clearfix'></div>
+<div class='file_content blob_file'>
+<center>
+<a href="/qianchilang/share/raw/master/Genymotion-ARM-Translation_v1.1.zip"><div class='padded'>
+<h4>
+<i class='icon-download-alt'></i>
+<br>
+Download (8.96 MB)
+</h4>
+</div>
+</a></center>
+</div>
+
+</div>
+</div>
+<div class='tree_progress'></div>
+<div class='ui small modal' id='modal-linejump'>
+<div class='ui custom form content'>
+<div class='field'>
+<div class='ui right action input'>
+<input placeholder='Jump to line...' type='number'>
+<div class='ui orange button'>
+Go
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class='row column inner-comment' id='blob-comment'>
+<input id="comment_path" name="comment_path" type="hidden" value="Genymotion-ARM-Translation_v1.1.zip" />
+<div class='tree-comments'>
+<h3 id='tree_comm_title'>
+Comment
+(
+<span class='comments-count'>
+0
+</span>
+)
+</h3>
+<div class='ui threaded comments middle aligned' id='notes-list'></div>
+<input id="ajax_add_note_id" name="ajax_add_note_id" type="hidden" />
+<div class='text-center'>
+<div class='tip-loading' style='display: none'>
+<div class='ui active mini inline loader'></div>
+Loading...
+</div>
+</div>
+</div>
+<script>
+  "use strict";
+  (function(){
+    var page = 1
+    var commentsCount = 0
+    var $container = $('.tree-comments')
+    var $comments = $container.find('.ui.comments')
+    var $tipLoading = $container.find('.tip-loading')
+    var $btnLoad = $container.find('.btn-load-more')
+  
+    if (commentsCount < 1) {
+      return;
+    }
+  
+    var path;
+    if ($('#comment_path').val() === '') {
+      path = '/';
+    } else {
+      path = $('#comment_path').val();
+    }
+  
+    function loadComments () {
+      $btnLoad.hide();
+      $tipLoading.show();
+      $.ajax({
+        url: '/qianchilang/share/comment_list',
+        data: {
+          page: page,
+          path: path
+        },
+        success: function(data) {
+          var err;
+          try {
+            $tipLoading.hide();
+            $btnLoad.show();
+            if (data.status !== 0) {
+              $btnLoad.text('No more comments')
+              return $btnLoad.prop('disabled', true).addClass('disabled');
+            } else {
+              TreeComment.CommentListHandler(data);
+              page += 1;
+              if (data.comments_count < 10) {
+                $('#ajax_add_note_id').val('');
+                $btnLoad.text('No more comments')
+                $btnLoad.prop('disabled', true).addClass('disabled');
+              }
+              // osctree can not load script
+              $comments.find('.timeago').timeago();
+              $comments.find('.commenter-role-label').popup();
+              noteAnchorLocater.setup();
+              toMathMlCode('', 'comments');
+              return $('.markdown-body pre code').each(function(i, block) {
+                return hljs.highlightBlock(block);
+              });
+            }
+          } catch (error) {
+            err = error;
+            return console.log('loadComments error:' + err);
+          }
+        }
+      });
+    };
+  
+  
+    function checkLoad () {
+      var listTop, top;
+      top = $(window).scrollTop();
+      listTop = $container.offset().top;
+      if (listTop >= top && listTop < top + $(window).height()) {
+        $(window).off('scroll', checkLoad);
+        return loadComments();
+      }
+    };
+  
+    $btnLoad.on('click', loadComments);
+    loadComments()
+  
+    try {
+      this.noteAnchorLocater.init({
+        lastAnchorElm: '#tree_comm_title'
+      });
+    } catch (error) {
+      console.log('noteAnchorLocater err:' + error);
+    }
+  })();
+</script>
+
+</div>
+<div class='inner-comment-box' id='comment-box'>
+<p>
+You need to <a href="/login">Sign in</a> for post a comment
+</p>
+
+</div>
+
+<script>
+  "use strict";
+  $('#checked_comments_with_star').checkbox('set unchecked')
+</script>
+
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    $(function() {
+      Tree.init();
+      return TreeCommentActions.init();
+    });
+  
+  }).call(this);
+</script>
+
+</div>
+</div>
+<script>
+  (function() {
+    var donateModal;
+  
+    Gitee.modalHelper = new GiteeModalHelper({
+      alertText: '提示',
+      okText: '确定'
+    });
+  
+    donateModal = new ProjectDonateModal({
+      el: '#project-donate-modal',
+      alipayUrl: '/qianchilang/share/alipay',
+      wepayUrl: '/qianchilang/share/wepay',
+      modalHelper: Gitee.modalHelper
+    });
+  
+    if ("" === 'true') {
+      donateModal.show();
+    }
+  
+    $('#project-donate').on('click', function() {
+      return donateModal.show();
+    });
+  
+  }).call(this);
+</script>
+<script>
+  Tree.initHighlightTheme('white')
+</script>
+
+<script>
+  $(function() {
+    GitLab.GfmAutoComplete.dataSource = "/qianchilang/share/autocomplete_sources"
+    GitLab.GfmAutoComplete.Emoji.assetBase = 'https://assets.gitee.com/assets/emoji'
+    GitLab.GfmAutoComplete.setup();
+  });
+</script>
+
+<footer id='git-footer-main'>
+<div class='ui container'>
+<div class='ui two column grid'>
+<div class='column'>
+<p><a href="https://gitee.com/" target="_blank">© Gitee.com  </a></p>
+<div class='ui three column grid' id='footer-left'>
+<div class='column'>
+<div class='ui link list'>
+<div class='item'>
+<a href="/about_us" class="item">About us</a>
+</div>
+<div class='item'>
+<a href="/terms" class="item">Terms</a>
+</div>
+<div class='item'>
+<a href="/oschina/git-osc/issues" class="item">Suggestions</a>
+</div>
+<div class='item'>
+<a href="/links.html" class="item">Partners</a>
+</div>
+</div>
+</div>
+<div class='column'>
+<div class='ui link list'>
+<div class='item'>
+<a href="/api/v5/swagger" class="item">OpenAPI</a>
+</div>
+<div class='item'>
+<a href="/all-about-git" class="item">All About Git</a>
+</div>
+<div class='item'>
+<a href="https://copycat.gitee.com/" class="item">Code Clone Detection</a>
+</div>
+<div class='item'>
+<a href="/appclient" class="item">App and Plugins</a>
+</div>
+</div>
+</div>
+<div class='column'>
+<div class='ui link list'>
+<div class='item'>
+<a href="https://gitee.com/help" class="item">Tutorial</a>
+</div>
+<div class='item'>
+<a href="https://gitee.com/git-osc/" class="item">CHANGELOG</a>
+</div>
+<div class='item'>
+<a href="/gists" class="item">Gists</a>
+</div>
+<div class='item'>
+<a href="/gitee-stars" class="item">Gitee Stars</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='column right aligned followus'>
+<div class='qrcode weixin'>
+<img alt="Qrcode-weixin" src="https://assets.gitee.com/assets/qrcode-weixin-8ab7378f5545710bdb3ad5c9d17fedfe.jpg" />
+<p class='weixin-text'>WeChat</p>
+</div>
+<div class='phone-and-qq column'>
+<div class='ui list official-support-container'>
+<div class='item'>
+<a href="//shang.qq.com/wpa/qunwpa?idkey=0d6c2fc0b5b71ac33405dd575bb490bf1a50e3c9a9f694e8a689cb59ee7dacc3" class="icon-popup" title="点击加入码云官方三群"><i class='iconfont icon-logo-qq'></i>
+<span>
+Official QQ Group: 655903986
+</span>
+</a></div>
+<div class='item mail-and-zhihu'>
+<a href="mailto: git@oschina.cn"><i class='iconfont icon-ic-mail'></i>
+<span id='git-footer-email'>
+git#oschina.cn
+</span>
+</a><a href="https://www.zhihu.com/org/ma-yun-osc/ " target="_blank"><i class='iconfont icon-zhihu'></i>
+<span>
+Gitee
+</span>
+</a></div>
+<div class='item'>
+Enterprise Edition consulting: 400-606-0201
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class='bottombar'>
+<div class='ui container'>
+<div class='ui grid'>
+<div class='five wide column partner'>
+Bandwidth provided by <a href="https://www.anchnet.com/" target="_blank" title="anchnet"><img alt="51idc" src="/51idc.png" /></a>
+</div>
+<div class='eleven wide column right aligned'>
+<div class='copyright'>
+<a href="http://www.miitbeian.gov.cn/">粤ICP备12009483号-8</a>
+深圳市奥思网络科技有限公司版权所有
+</div>
+<i class='icon world'></i>
+<a href="/language/zh-CN">简 体
+</a>/
+<a href="/language/zh-TW">繁 體
+</a>/
+<a href="/language/en">English
+</a></div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+  var officialEmail = $('#git-footer-email').text()
+  $('#git-footer-main .icon-popup').popup({ position: 'bottom center' })
+  $('#git-footer-email').text(officialEmail.replace('#', '@'))
+</script>
+
+
+<div class='side-toolbar'>
+<div class='button toolbar-help'>
+<i class='iconfont icon-help'></i>
+</div>
+<div class='ui popup left center dark'>Need help</div>
+<div class='toolbar-help-dialog'>
+<div class='toolbar-dialog-header'>
+<h3 class='toolbar-dialog-title'>Help Search</h3>
+<form accept-charset="UTF-8" action="/help/load_keywords_data" class="toolbar-help-search-form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+<div class='ui icon input fluid toolbar-help-search'>
+<input name='keywords' placeholder='Please enter a question' type='text'>
+<i class='icon search'></i>
+</div>
+</form>
+
+<i class='iconfont icon-close toolbar-dialog-close-icon'></i>
+</div>
+<div class='toolbar-dialog-content'>
+<div class='toolbar-help-hot-search'>
+<div class='toolbar-list'>
+<div class='toolbar-list-item'>
+<a href="/help/articles/4114">Git 仓库的基本操作</a>
+</div>
+<div class='toolbar-list-item'>
+<a href="/help/articles/4166">企业版和个人版功能对比</a>
+</div>
+<div class='toolbar-list-item'>
+<a href="/help/articles/4194">如何处理代码冲突</a>
+</div>
+<div class='toolbar-list-item'>
+<a href="/help/articles/4202">在小程序Web开发工具中使用Git做版本管理</a>
+</div>
+<div class='toolbar-list-item'>
+<a href="/help/articles/4232">仓库体积过大，如何减小？</a>
+</div>
+<div class='toolbar-list-item'>
+<a href="/help/articles/4233">组织私有成员超额，如何处理？</a>
+</div>
+<div class='toolbar-list-item'>
+<a href="/help/articles/4234">个人私有成员超过5人，怎么办？</a>
+</div>
+</div>
+</div>
+<div class='toolbar-help-search-reseult'>
+<div class='toolbar-help-flex-column'>
+<div class='ui centered inline loader toolbar-help-loader'></div>
+<div class='toolbar-list'></div>
+<div class='toolbar-help-link-to-help'>
+<a href="" target="_blank">More results</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  var opt = { position: 'left center' };
+  var $helpSideToolbar = $(".button.toolbar-help");
+  
+  $(function() {
+    if (false) {
+      $helpSideToolbar.popup(opt);
+    } else {
+      $helpSideToolbar.popup('show', opt);
+      setTimeout(function() {
+        $helpSideToolbar.popup('hide', opt);
+      }, 3000);
+    }
+  })
+</script>
+
+<div class='button share-link'>
+<i class='iconfont icon-share'></i>
+</div>
+<div class='ui popup dark'>
+<div class='header'>
+Share to
+</div>
+<div class='bdsharebuttonbox' style='display: flex'>
+<a class='iconfont icon-home-service-wechat' data-cmd='weixin' title='分享到微信'></a>
+<a class='iconfont icon-weibo' data-cmd='tsina' title='分享到新浪微博'></a>
+<a class='iconfont icon-qq' data-cmd='sqq' title='分享到QQ好友'></a>
+<a class='iconfont icon-qzone' data-cmd='qzone' title='分享到QQ空间'></a>
+</div>
+</div>
+<div class='popup button' id='home-comment'>
+<i class='iconfont icon-comment'></i>
+</div>
+<div class='ui popup dark'>Comment</div>
+<div class='button gotop popup' id='gotop'>
+<i class='iconfont icon-top'></i>
+</div>
+<div class='ui popup dark'>Back to top</div>
+</div>
+<style>
+  .side-toolbar .bdsharebuttonbox a {
+    font-size: 24px;
+    color: white !important;
+    opacity: 0.9;
+    margin: 6px 6px 0px 6px;
+    background-image: none;
+    text-indent: 0;
+  }
+</style>
+<script>
+  (function() {
+    $('#project-user-message').popup({
+      position: 'left center'
+    });
+  
+  }).call(this);
+</script>
+<script>
+  Gitee.initSideToolbar({
+    hasComment: true,
+    commentUrl: '/qianchilang/share#tree_comm_title'
+  })
+</script>
+<script>
+  window._bd_share_config = {
+    "common": {
+      "bdSnsKey": {},
+      "bdText": document.title,
+      "bdMini": "1",
+      "bdMiniList": ["bdxc","tqf","douban","bdhome","sqq","thx","ibaidu","meilishuo","mogujie","diandian","huaban","duitang","hx","fx","youdao","sdo","qingbiji","people","xinhua","mail","isohu","yaolan","wealink","ty","iguba","fbook","twi","linkedin","h163","evernotecn","copy","print"],
+      "bdPic": "",
+      "bdStyle": "1",
+      "bdSize": "32"
+    },
+    "share": {}
+  }
+</script>
+<script src="/bd_share/static/api/js/share.js" type="text/javascript"></script>
+
+
+<style>
+  .float-left-box{display:none;position:fixed;left:0;bottom:0;z-index:99}.float-left-box .close-left{position:absolute;top:20px;left:25px;cursor:pointer}.float-left-box .float-people{width:170px;padding:10px}
+</style>
+<div class='float-left-box'>
+<a href='https://gitee.com/2018annual' target='_blank'>
+<img alt="Annual_bulletin" class="float-people" src="https://assets.gitee.com/assets/page_widget/annual_bulletin-853030810a1d2dab931c8e3b199dc478.png" />
+<img alt="Annual_bulletin_close" class="close-left" src="https://assets.gitee.com/assets/page_widget/annual_bulletin_close-a1f4c209193a8ec42578caa54eed1df2.png" />
+</a>
+</div>
+<script>
+  var giteeStarsWidget = $('.float-left-box')
+  if ($.cookie('annual_bulletin') == 1) {
+    giteeStarsWidget.hide()
+  } else {
+    giteeStarsWidget.show()
+  }
+  $('.close-left').on('click', function(e) {
+    e.preventDefault()
+    $.cookie('annual_bulletin', 1, { path: '/', expires: 30})
+    giteeStarsWidget.hide()
+  })
+</script>
+
+<script>
+  (function() {
+    this.__gac = {
+      domain: 'www.oschina.net'
+    };
+  
+  }).call(this);
+</script>
+<script defer src='//www.oschina.net/public/javascripts/cjl/ga.js?t=20160926' type='text/javascript'></script>
+
+</body>
+</html>
