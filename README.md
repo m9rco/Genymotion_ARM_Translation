@@ -1,8 +1,8 @@
-​<h1 align="center">:whale: Genymotion_ARM_Translation :whale: </h1>
+​<h1 align="center">:rocket: Genymotion_ARM_Translation :rocket: </h1>
 
 <p align="center">
-<a href="https://github.com/m9rc0/Genymotion_ARM_Translation">
-  <img src="https://img.shields.io/badge/php-done-brightgreen.svg" alt="php">
+<a href="https://github.com/m9rc0">
+  <img src="https://img.shields.io/website-up-down-green-red/https/shields.io.svg?label=m9rc0">
 </a>
 <a href="https://github.com/m9rc0/Genymotion_ARM_Translation">
     <img src="https://img.shields.io/github/license/mashape/apistatus.svg">
@@ -12,13 +12,21 @@
 ## Genymotion 目前支持的目录
 
 ```
-  ./
-  ├── Genymotion-ARM-Translation_for_4.4.zip
-  ├── Genymotion-ARM-Translation_for_5.1.zip
-  ├── Genymotion-ARM-Translation_for_6.0.zip
-  ├── Genymotion-ARM-Translation_for_8.0.zip
-  └── README.md
+├── LICENSE
+├── README.md
+└── package
+    ├── Genymotion-ARM-Translation_for_4.4.zip
+    ├── Genymotion-ARM-Translation_for_5.1.zip
+    ├── Genymotion-ARM-Translation_for_6.0.zip
+    └── Genymotion-ARM-Translation_for_8.0.zip
 ```
+
+## 对应安卓版本
+
+* [4.4](/blob/master/package/Genymotion-ARM-Translation_for_4.4.zip)
+* [5.1](/blob/master/package/Genymotion-ARM-Translation_for_5.1.zip)
+* [6.0](/blob/master/package/Genymotion-ARM-Translation_for_6.0.zip)
+* [8.0](/blob/master/package/Genymotion-ARM-Translation_for_8.0.zip)
 
 ## Genymotion 不能安装APK的解决方法：
 
