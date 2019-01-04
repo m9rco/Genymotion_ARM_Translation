@@ -23,10 +23,10 @@
 
 ## 对应安卓版本
 
-* [4.4](/blob/master/package/Genymotion-ARM-Translation_for_4.4.zip)
-* [5.1](/blob/master/package/Genymotion-ARM-Translation_for_5.1.zip)
-* [6.0](/blob/master/package/Genymotion-ARM-Translation_for_6.0.zip)
-* [8.0](/blob/master/package/Genymotion-ARM-Translation_for_8.0.zip)
+* [4.4](/package/Genymotion-ARM-Translation_for_4.4.zip)
+* [5.1](//package/Genymotion-ARM-Translation_for_5.1.zip)
+* [6.0](/package/Genymotion-ARM-Translation_for_6.0.zip)
+* [8.0](/package/Genymotion-ARM-Translation_for_8.0.zip)
 
 ## Genymotion 不能安装APK的解决方法：
 
