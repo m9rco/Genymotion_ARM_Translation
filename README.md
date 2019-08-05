@@ -42,7 +42,7 @@
 ```
 4. Resetting the Emulator
 
-## Install Abd
+## Install Adb
 
 ```bash
   brew cask install android-platform-tools
