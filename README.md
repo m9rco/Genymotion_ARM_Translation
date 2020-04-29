@@ -26,7 +26,7 @@
 
 * [4.3](/package/Genymotion-ARM-Translation_for_4.3.zip)
 * [4.4](/package/Genymotion-ARM-Translation_for_4.4.zip)
-* [5.1](//package/Genymotion-ARM-Translation_for_5.1.zip)
+* [5.1](/package/Genymotion-ARM-Translation_for_5.1.zip)
 * [6.0](/package/Genymotion-ARM-Translation_for_6.0.zip)
 * [7.X](/package/Genymotion-ARM-Translation_for_7.X.zip)
 * [8.0](/package/Genymotion-ARM-Translation_for_8.0.zip)
