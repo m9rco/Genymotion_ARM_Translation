@@ -40,7 +40,7 @@
   1. adb shell
   2. cd /sdcard/Download/
   3. sh /system/bin/flash-archive.sh /sdcard/Download/Genymotion-ARM-Translation.zip
-  4. adb reboot
+  4. reboot
 ```
 4. Resetting the Emulator
 
