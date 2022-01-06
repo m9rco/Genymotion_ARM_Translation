@@ -84,18 +84,17 @@ $ git clone https://github.com/howstrangeoficial/genymotion.git
 <br>
 
 # Support
-and [SECURITY VERSIONS](security.md)
 Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
 Email support alansilva@asasolucoes.com
 
 <br>
 
 <h4 align="center"> 
-	🚧  Project status 🚀 Developing...  🚧
+	🚧  Project status 🚀 Done...  🚧
 </h4>
 
 <br>
 
 # Preview
-![Preview](images/project.gif)
+![Preview](images/project.jpg)
 Viewing a preview image to describe the project itself.
