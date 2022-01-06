@@ -1,38 +1,55 @@
-​<h1 align="center">:rocket: Genymotion_ARM_Translation :rocket: </h1>
+<div align="center">
+    <a href="#">
+        <img height="80" width="80" alt="project-icon"
+    src="images/android.png">
+    </a>
+    <h1><a href="#">Genymotion Packages</a> </h1>
 
-<p align="center">
-<a href="https://github.com/m9rc0">
-  <img src="https://img.shields.io/website-up-down-green-red/https/shields.io.svg?label=m9rc0">
-</a>
-<a href="https://github.com/m9rc0/Genymotion_ARM_Translation">
-    <img src="https://img.shields.io/github/license/mashape/apistatus.svg">
-</a>
-</p>
+![Stars](https://img.shields.io/github/stars/howstrangeoficial/genymotion)
+![Forks](https://img.shields.io/github/forks/howstrangeoficial/genymotion)
+[![Linux](https://svgshare.com/i/Zhy.svg)](https://svgshare.com/i/Zhy.svg)
+[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](LICENSE)
+![Languages](https://img.shields.io/github/languages/count/howstrangeoficial/genymotion)
+![Top-Language](https://img.shields.io/github/languages/top/howstrangeoficial/genymotion)
+![Discord](https://img.shields.io/discord/907324033698234448?label=Discord)
+![Code](https://img.shields.io/github/languages/code-size/howstrangeoficial/genymotion)
 
-## Genymotion Translation
+[**Read The Docs**](https://blog.rocketseat.com.br/como-fazer-um-bom-readme) |
+[Author](https://github.com/howstrangeoficial) |
+[License](LICENSE) |
+[Issues](https://github.com/howstrangeoficial/genymotion/issues) |
+[Contributing](contributing.md)
 
+</div>
+
+
+Table of Contents
+=================
+   * [About the Project](#About)
+   * [Install Project](#Install)
+   * [Preview Project Deskop](#preview)
+      * [Local files](#Local-Files)
+      * [Project Usage](#Usage)
+      * [Project Support](#Support)
+   * [Technologies Usage](#Technologies)
+
+<br>
+
+# About
+<p align="center"> Packs de arm translate para o Emulador de android Genymotion.</p>
+
+<br>
+
+# Install
+```bash
+#git clone repository
+
+$ git clone https://github.com/howstrangeoficial/genymotion.git
 ```
-├── LICENSE
-├── README.md
-└── package
-    ├── Genymotion-ARM-Translation_for_4.4.zip
-    ├── Genymotion-ARM-Translation_for_5.1.zip
-    ├── Genymotion-ARM-Translation_for_6.0.zip
-    ├── Genymotion-ARM-Translation_for_7.X.zip
-    └── Genymotion-ARM-Translation_for_8.0.zip
-```
 
-## Android version mapping
+<br>
 
-* [4.3](/package/Genymotion-ARM-Translation_for_4.3.zip)
-* [4.4](/package/Genymotion-ARM-Translation_for_4.4.zip)
-* [5.1](/package/Genymotion-ARM-Translation_for_5.1.zip)
-* [6.0](/package/Genymotion-ARM-Translation_for_6.0.zip)
-* [7.X](/package/Genymotion-ARM-Translation_for_7.X.zip)
-* [8.0](/package/Genymotion-ARM-Translation_for_8.0.zip)
-
-## Genymotion Can't install the APK solution:
-
+# Usage
 1. download Genymotion-ARM-Translation-for[v]
 2. Will download the toolkit drag and drop into the Genymotion directly,
 3. If failure
@@ -44,14 +61,41 @@
 ```
 4. Resetting the Emulator
 
+<br>
+
 ## Install Adb
 
 ```bash
   brew cask install android-platform-tools
 ```
 
-## Samples and Common Problems
-```
-  An error occured while deploying the file.
-  This probably means that the app contains ARM native code and your Genymotion device cannot run ARM instructions. You should either build your native code to x86 or install an ARM translation tool in your device.
-```
+<br>
+
+## Android version mapping
+
+* [4.3](/package/Genymotion-ARM-Translation_for_4.3.zip)
+* [4.4](/package/Genymotion-ARM-Translation_for_4.4.zip)
+* [5.1](/package/Genymotion-ARM-Translation_for_5.1.zip)
+* [6.0](/package/Genymotion-ARM-Translation_for_6.0.zip)
+* [7.X](/package/Genymotion-ARM-Translation_for_7.X.zip)
+* [8.0](/package/Genymotion-ARM-Translation_for_8.0.zip)
+
+
+<br>
+
+# Support
+and [SECURITY VERSIONS](security.md)
+Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+Email support alansilva@asasolucoes.com
+
+<br>
+
+<h4 align="center"> 
+	🚧  Project status 🚀 Developing...  🚧
+</h4>
+
+<br>
+
+# Preview
+![Preview](images/project.gif)
+Viewing a preview image to describe the project itself.
