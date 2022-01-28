@@ -7,17 +7,14 @@
 ![Stars](https://img.shields.io/github/stars/howstrangeoficial/genymotion)
 ![Forks](https://img.shields.io/github/forks/howstrangeoficial/genymotion)
 [![Linux](https://svgshare.com/i/Zhy.svg)](https://svgshare.com/i/Zhy.svg)
-[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](LICENSE)
-![Languages](https://img.shields.io/github/languages/count/howstrangeoficial/genymotion)
-![Top-Language](https://img.shields.io/github/languages/top/howstrangeoficial/genymotion)
+[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](license)
 ![Discord](https://img.shields.io/discord/928742162219270175?label=Discord)
 ![Code](https://img.shields.io/github/languages/code-size/howstrangeoficial/genymotion)
 ![issues](https://img.shields.io/github/issues/howstrangeoficial/genymotion)
 ![Pull Requests](https://img.shields.io/github/issues-pr-raw/howstrangeoficial/genymotion)
 
-[**Read The Docs**](https://github.com/howstrangeoficial/genymotion/wiki) |
 [Author](https://github.com/howstrangeoficial) |
-[License](LICENSE) |
+[License](license) |
 [Issues](https://github.com/howstrangeoficial/genymotion/issues) |
 [Contributing](contributing.md)
 
