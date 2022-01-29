@@ -3,7 +3,7 @@
 <table>
   <tr>
     <td align="center">
-      <a href="#">
+      <a href="https://github.com/howstrangeoficial">
         <img src="https://avatars3.githubusercontent.com/u/88163707" width="100px;" alt="Imagem do Autor"/><br>
         <sub>
           <b>Alan Silva</b>
@@ -11,7 +11,7 @@
       </a>
     </td>
     <td align="center">
-      <a href="#">
+      <a href="https://github.com/https://github.com/m9rco">
         <img src="https://avatars3.githubusercontent.com/u/18391791" width="100px;" alt="Imagem do Autor"/><br>
         <sub>
           <b>Marco</b>
