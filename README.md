@@ -23,7 +23,7 @@
 # Install
 ```bash
 $ sudo pacman -S virtualbox-host-modules-arch adb
-$ git clone https://github.com/howstrangeoficial/genymotion.git
+$ git clone https://github.com/howstrangeoficial/genymotion-packages.git
 ```
 
 <br>
