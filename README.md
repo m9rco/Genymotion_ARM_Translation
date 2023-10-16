@@ -68,6 +68,6 @@ If you are still getting this error message, follow the guide:
  - If you don't know how to run ADB shell, follow [this guide](https://docs.genymotion.com/desktop/041_Deploying_an_app/#install-the-arm-translation-tools) to get ABI information.
 
 2. Check if armeabi-v7a is enough for your APK.
-  - Run `unzip -l YOUR_APP.apk | grep -o ' lib/[^/]*/' | uniq`. If the **only** output is `lib/arm64-v8a/`, it means your APK doesn't support armv7 (32bit). You need another translation tool for armv8 (64bit) support.
+  - Run `unzip -l YOUR_APP.apk | grep -o ' lib/[^/]*/' | uniq`. If the **only** output is `lib/arm64-v8a/`, it means your APK doesn't support armv7 (32bit). You need another translation tool for armv8 (64bit) support. [This project](https://github.com/niizam/Genymotion_A11_libhoudini) might help.
 
 
