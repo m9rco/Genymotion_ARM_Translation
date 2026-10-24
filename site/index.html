@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Genymotion ARM Translation 下载中心：历史 ARMv7 ZIP、Android 11–14 ARM64 实验包、安装步骤和 SHA-256 校验值。">
+  <meta name="color-scheme" content="light">
+  <title>Genymotion ARM Translation · 下载中心</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%234f46e5'/%3E%3Cpath d='M12 32 24 12 36 32M17 25h14' fill='none' stroke='white' stroke-width='4'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#downloads">跳到下载列表</a>
+  <header><a class="brand" href="./"><span class="brand-icon" aria-hidden="true">A</span><span>Genymotion <b>ARM Translation</b></span></a><nav aria-label="主导航"><a href="#downloads">下载</a><a href="#install">安装</a><a href="{{REPOSITORY}}">GitHub <span aria-hidden="true">↗</span></a></nav></header>
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div><p class="eyebrow"><span></span> COMMUNITY PACKAGES</p><h1 id="hero-title">为你的 Genymotion<br>找到合适的 <em>ARM 包。</em></h1><p class="hero-description">旧版 ARMv7 转译 ZIP 与新版 ARM64 实验包。<br>按 Android 版本选择，下载、校验，再安装。</p><a class="hero-action" href="#downloads">选择版本 <span aria-hidden="true">↓</span></a></div>
+      <aside class="overview" aria-label="包概览"><span class="overview-label">PACKAGE INDEX</span><div><strong>{{LEGACY_COUNT}}</strong><span>历史 ARMv7 包</span></div><div><strong>{{EXPERIMENTAL_COUNT}}</strong><span>ARM64 实验包</span></div><div><strong>{{MISSING_COUNT}}</strong><span>明确标记的版本缺口</span></div><p>清单更新于 {{REVIEWED}}</p></aside>
+    </section>
+    <div class="notice"><span class="notice-dot" aria-hidden="true"></span><p>适用于 Intel / AMD 上的 Genymotion Desktop x86 / x86_64 镜像。实验包尚未完成实机运行验收；Android 12–14 共用上游文件，仅提供 ARM64。</p></div>
+    <section id="downloads" aria-labelledby="downloads-title">
+      <div class="section-heading"><div><p class="eyebrow">DOWNLOADS</p><h2 id="downloads-title">选对版本，再开始。</h2></div><a class="text-link" href="{{REPOSITORY}}/releases">所有 Releases ↗</a></div>
+      <div class="toolbar" hidden id="toolbar"><label class="search"><span aria-hidden="true">⌕</span><span class="sr-only">搜索 Android 版本或包名</span><input id="search" type="search" placeholder="搜索 Android 版本或包名…" autocomplete="off"></label><div class="filters" role="group" aria-label="包类型"><button data-filter="all" aria-pressed="true">全部</button><button data-filter="experimental" aria-pressed="false">ARM64 实验包</button><button data-filter="legacy" aria-pressed="false">历史 ARMv7</button></div></div>
+      <p id="search-status" class="sr-only" aria-live="polite"></p>
+      <section class="package-section" data-section="experimental" aria-labelledby="modern-title"><h2 class="group-title" id="modern-title">ARM64 完整包 <span>含转译库与配置工具</span></h2><div class="modern-grid">{{EXPERIMENTAL_CARDS}}</div></section>
+      <section class="package-section" data-section="legacy" aria-labelledby="legacy-title"><h2 class="group-title" id="legacy-title">历史 ARMv7 <span>匹配旧版 Android 镜像</span></h2><div class="legacy-grid">{{LEGACY_CARDS}}</div></section>
+      <p class="empty" id="empty" hidden>未找到匹配的包，请尝试其他版本或查看下面的缺失清单。</p>
+      <div class="missing"><div><h3>这些版本目前没有对应包</h3><p>不会用邻近版本重命名代替。</p></div><div class="missing-list">{{MISSING_CARDS}}</div></div>
+    </section>
+    <section class="install" id="install" aria-labelledby="install-title"><div><p class="eyebrow">GET STARTED</p><h2 id="install-title">三个步骤，准备就绪。</h2><p>先创建虚拟机快照。历史 ZIP 可按版本刷入；完整 package 需要先解压。</p></div><ol><li><span>01</span><div><h3>核对版本与架构</h3><p>确认 Android 版本、x86 / x86_64 镜像及应用 ABI，避免跨版本刷入。</p></div></li><li><span>02</span><div><h3>下载并校验</h3><p>展开包卡片的 SHA-256，核对文件后再安装。完整包内有 INSTALL.md。</p></div></li><li><span>03</span><div><h3>按说明配置并重启</h3><p>将完整包中的 system.zip 刷入，再执行随包配置工具。校验通过后仍需测试实际应用。</p></div></li></ol></section>
+  </main>
+  <footer><span>Genymotion ARM Translation <small>社区维护 · {{REVIEWED}}</small></span><div><a href="{{REPOSITORY}}/issues">反馈问题</a><a href="{{REPOSITORY}}/blob/master/CHANGELOG.md">更新记录</a><a href="{{REPOSITORY}}/blob/master/LICENSE">许可与来源</a></div></footer>
+  <div id="toast" class="toast" role="status" hidden>已复制 SHA-256</div>
+</body>
+</html>
