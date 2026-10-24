@@ -88,7 +88,7 @@ mount -o rw,remount /
 sh /data/local/tmp/geny-arm64-bundle/apply.sh
 ```
 
-The script requires root, API 30, an x86_64 kernel and Genymotion identity. It verifies both current property files against this bundle's original/patched hashes, checks all six installed core ELF hashes, then writes and rechecks properties while preserving existing file metadata. Modified properties or a bundle from another VM are rejected before property writes. A write failure attempts restoration of both original property files and reports any recovery failure.
+The script requires root, API 30, an x86_64 kernel and Genymotion identity. It verifies both current property files against this bundle's original/patched hashes, checks all six installed core ELF hashes, then writes and rechecks properties while preserving existing file metadata. Modified properties or a bundle from another VM are rejected before property writes. A write failure attempts to restore each changed file to its exact pre-operation state and verifies its hash, even if the device was already patched before this invocation. Files already in the requested state are not rewritten. Any recovery failure is reported.
 
 It does not disable SELinux/verity, remount partitions or reboot automatically. If the system/vendor partition remains read-only, stop and use a compatible writable rooted test image. Do not disable verification or improvise block-device mount commands. See [upstream read-only filesystem issue #11](https://github.com/niizam/Genymotion_A11_libhoudini/issues/11).
 
@@ -106,11 +106,13 @@ Wait until Android finishes booting, then:
 python3 scripts/android11_arm64.py verify --serial SERIAL
 ```
 
-This uses read-only ADB shell queries with an explicit serial. A successful result says `configuration_matches: true` and **`runtime_tested: false`**. It checks all managed ABI/bridge/zygote properties and the six installed core hashes. Failure returns a nonzero exit status. It does not certify apps or Play Store compatibility.
+This uses read-only ADB shell queries with an explicit serial. A successful result says `configuration_matches: true` and **`runtime_tested: false`**. It checks all managed ABI/bridge/zygote properties and the six installed core hashes. The JSON `core_files` section records expected/actual hashes and `match`, `mismatch` or `error` for each file. Missing/unreadable files, malformed hash output and per-file timeouts are collected without stopping the remaining core checks. Failure returns a nonzero exit status. It does not certify apps or Play Store compatibility.
 
 Use the [runtime acceptance procedure](arm64-runtime-validation.md) for an AArch64 execution probe and a real ARM64-only APK. Keep the probe result and app result separate: a native executable passing does not establish Android app/JNI compatibility.
 
 Known limits include crashes and Play Store filtering after configuration; see [upstream #2](https://github.com/niizam/Genymotion_A11_libhoudini/issues/2) and [#17](https://github.com/niizam/Genymotion_A11_libhoudini/issues/17). Do not report Android 12+ or arbitrary app compatibility from an ABI list.
+
+Generated bundles embed the script version used at preparation time. After a tooling update, regenerate from your preserved original property files into a **new** output directory; an existing on-device bundle does not update automatically. See the [changelog](../CHANGELOG.md).
 
 ## Restore properties
 

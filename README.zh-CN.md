@@ -6,6 +6,8 @@ Intel/AMD 电脑运行 ARM64 应用，请使用[Android 11 接入指南](docs/an
 
 [English](README.md) · [ADB 使用说明](tools/adb.md) · [文件审计记录](docs/package-audit.md)
 
+[更新记录（2026-10-24）](CHANGELOG.md) · [版本支持与上游调研](docs/compatibility-status.md)
+
 ## 版本与适用范围
 
 仓库只保存预编译包，没有转译引擎源码或可复现构建流程。文件名表示历史目标版本，不代表当前兼容性认证。2026-10-24 的维护仅进行静态文件检查，未在模拟器上进行运行验证。
