@@ -1,0 +1,24 @@
+name: Verify packages
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test verification failure paths
+        run: python3 -m unittest discover -s scripts -p 'test_*.py' -v
+      - name: Verify package hashes and ZIP integrity
+        run: python3 scripts/verify_packages.py

@@ -1,73 +1,108 @@
-​<h1 align="center">:rocket: Genymotion_ARM_Translation :rocket: </h1>
+# Genymotion ARM Translation
 
-<p align="center">
-<a href="https://github.com/m9rc0">
-  <img src="https://img.shields.io/website-up-down-green-red/https/shields.io.svg?label=m9rc0">
-</a>
-<a href="https://github.com/m9rc0/Genymotion_ARM_Translation">
-    <img src="https://img.shields.io/github/license/mashape/apistatus.svg">
-</a>
-</p>
+Historical ARM translation packages for **legacy Genymotion Desktop x86 Android images**. These packages target 32-bit ARM applications (`armeabi-v7a`); they do not add ARM64 (`arm64-v8a`) support.
 
-## Genymotion Translation
+[简体中文](README.zh-CN.md) · [ADB guide](tools/adb.md) · [Package audit](docs/package-audit.md)
 
-```
-├── LICENSE
-├── README.md
-└── package
-    ├── Genymotion-ARM-Translation_for_4.4.zip
-    ├── Genymotion-ARM-Translation_for_5.1.zip
-    ├── Genymotion-ARM-Translation_for_6.0.zip
-    ├── Genymotion-ARM-Translation_for_7.X.zip
-    ├── Genymotion-ARM-Translation_for_8.0.zip
-    └── Genymotion-ARM-Translation_for_9.0.zip
-```
+## Scope and compatibility
 
-## Android version mapping
+This repository preserves prebuilt packages, not the translation engine's source code or a reproducible build system. Package names indicate their intended Android versions, **not a current compatibility certification**. No emulator runtime validation was performed for the 2026-10-24 maintenance update.
 
-* [4.3](/package/Genymotion-ARM-Translation_for_4.3.zip)
-* [4.4](/package/Genymotion-ARM-Translation_for_4.4.zip)
-* [5.1](/package/Genymotion-ARM-Translation_for_5.1.zip)
-* [6.0](/package/Genymotion-ARM-Translation_for_6.0.zip)
-* [7.X](/package/Genymotion-ARM-Translation_for_7.X.zip)
-* [8.0](/package/Genymotion-ARM-Translation_for_8.0.zip)
-* [9.0](/package/Genymotion-ARM-Translation_for_9.0.zip)
+| Android image | Package | Status |
+| --- | --- | --- |
+| 4.3 | Unavailable | Previous file was HTML, not a ZIP; see the [audit](docs/package-audit.md). |
+| 4.4 | [Download ZIP](package/Genymotion-ARM-Translation_for_4.4.zip?raw=true) | Legacy; archive integrity checked |
+| 5.1 | [Download ZIP](package/Genymotion-ARM-Translation_for_5.1.zip?raw=true) | Legacy; archive integrity checked |
+| 6.0 | [Download ZIP](package/Genymotion-ARM-Translation_for_6.0.zip?raw=true) | Legacy; archive integrity checked |
+| 7.x | [Download ZIP](package/Genymotion-ARM-Translation_for_7.X.zip?raw=true) | Legacy; archive integrity checked |
+| 8.0 | [Download ZIP](package/Genymotion-ARM-Translation_for_8.0.zip?raw=true) | Legacy; archive integrity checked |
+| 9.0 | [Download ZIP](package/Genymotion-ARM-Translation_for_9.0.zip?raw=true) | Legacy; archive integrity checked |
+| Other versions, including 10+ | No package in this repository | Do not flash a package for a different Android version. |
 
-## Genymotion Can't install the APK solution:
+There are no dedicated 5.0, 7.1 or 8.1 packages here; the historical `7.X` label does not establish validation on every 7.x image. Use the named package only with an appropriate disposable legacy image. Reports about using the 8.0 package on 9.0 are mixed ([#12](https://github.com/m9rco/Genymotion_ARM_Translation/issues/12), [#26](https://github.com/m9rco/Genymotion_ARM_Translation/issues/26)); they do not extend the supported range.
 
-1. download Genymotion-ARM-Translation-for[v]
-2. Will download the toolkit drag and drop into the Genymotion directly,
-3. If failure
-```
-  1. adb shell
-  2. cd /sdcard/Download/
-  3. sh /system/bin/flash-archive.sh /sdcard/Download/Genymotion-ARM-Translation.zip
-  4. adb reboot
-```
-4. Resetting the Emulator
+For current host/image ABI compatibility, consult the [Genymotion installation guide](https://docs.genymotion.com/usage/desktop/install_apps/#supported-abis). Apple Silicon uses ARM64 images and is outside this legacy x86 package workflow. For ARM64 applications, use a compatible ARM64 device/image, or obtain an APK built for the target device's ABI. See also [Genymotion SaaS deployment](https://docs.genymotion.com/usage/saas/deploy_apps/) and [Android ABI documentation](https://developer.android.com/ndk/guides/abis).
 
-## Install Adb
+## Install on a legacy x86 image
 
-```bash
-  brew cask install android-platform-tools
-```
+Flashing changes the Android system and can leave a virtual device unusable. Back up needed data and use a disposable device. Install ARM translation **before Open GApps**, as described in the [official flashing instructions](https://docs.genymotion.com/usage/desktop/install_apps/#arm-32-bit-applications-on-x86_64-computers).
 
-## FAQ / Troubleshooting
+1. Check the virtual device's Android version and ABI with ADB (see [setup](tools/adb.md)):
 
-### APK still doesn't install after installing ARM_Translation tool
+   ```sh
+   adb devices -l
+   adb -s SERIAL shell getprop ro.build.version.release
+   adb -s SERIAL shell getprop ro.product.cpu.abi
+   adb -s SERIAL shell getprop ro.product.cpu.abilist
+   ```
 
-If you are still getting this error message, follow the guide:
+   Replace `SERIAL` with the intended Genymotion device from `adb devices -l`. On old Android images, `abilist` may be empty; also inspect `ro.product.cpu.abi2`.
 
-```
-  An error occured while deploying the file.
-  This probably means that the app contains ARM native code and your Genymotion device cannot run ARM instructions. You should either build your native code to x86 or install an ARM translation tool in your device.
+2. Download the matching ZIP above. Keep it compressed. Verify its hash against [SHA256SUMS](SHA256SUMS), then drag the ZIP onto the running virtual device and accept the flash prompt.
+3. Reboot the virtual device after flashing:
+
+   ```sh
+   adb -s SERIAL reboot
+   ```
+
+4. Once Android has finished booting, inspect the ABI properties again. Seeing `armeabi-v7a` (and sometimes `armeabi`) alongside `x86` indicates advertised 32-bit ARM support; it does not prove that a particular app will run.
+5. Install an APK with compatible native libraries:
+
+   ```sh
+   adb -s SERIAL install "application.apk"
+   ```
+
+If drag and drop only copies the ZIP, check the image/version and downloaded file first. On legacy images that actually provide `/system/bin/flash-archive.sh`, the manual fallback is:
+
+```sh
+adb -s SERIAL shell ls /system/bin/flash-archive.sh
+adb -s SERIAL push "package/Genymotion-ARM-Translation_for_8.0.zip" /sdcard/Download/arm-translation.zip
+adb -s SERIAL shell sh /system/bin/flash-archive.sh /sdcard/Download/arm-translation.zip
+adb -s SERIAL reboot
 ```
 
-1. Verify if you have installed ARM_Translation successfully.
- - Run `getprop ro.product.cpu.abilist` through ADB shell. If it shows `x86,armeabi-v7a,armeabi`, ARM_Translation has been installed successfully.
- - If you don't know how to run ADB shell, follow [this guide](https://docs.genymotion.com/desktop/041_Deploying_an_app/#install-the-arm-translation-tools) to get ABI information.
+This example is for **Android 8.0 only**; substitute the matching local ZIP. Stop if the script is missing or flashing fails. Do not repeatedly flash packages from other versions.
 
-2. Check if armeabi-v7a is enough for your APK.
-  - Run `unzip -l YOUR_APP.apk | grep -o ' lib/[^/]*/' | uniq`. If the **only** output is `lib/arm64-v8a/`, it means your APK doesn't support armv7 (32bit). You need another armv8 (64bit) translation tool. [This project](https://github.com/niizam/Genymotion_A11_libhoudini) might help.
+## Troubleshooting
 
+### `INSTALL_FAILED_NO_MATCHING_ABIS`
 
+Compare the device properties above with the APK's native library directories:
+
+```sh
+unzip -Z1 "application.apk" | awk -F/ '$1 == "lib" && NF >= 3 {print $2}' | sort -u
+```
+
+An APK containing only `arm64-v8a` libraries cannot use these 32-bit packages. For split APK installs, inspect **all** APKs in the split set, including the ABI split; the base APK alone can be misleading. No `lib/` output only means no conventional native libraries were found in that APK, not guaranteed compatibility.
+
+### Installation succeeds but the app crashes
+
+Translation is not full hardware emulation. A matching ABI is necessary for native libraries but does not guarantee runtime compatibility. Capture logs immediately after reproducing the failure:
+
+```sh
+adb -s SERIAL logcat -d > genymotion-logcat.txt
+```
+
+Check for native crashes, missing libraries, graphics requirements and root detection. Genymotion documents [other installation and runtime limitations](https://docs.genymotion.com/usage/desktop/install_apps/#installation-failures). Recreate a disposable device if flashing caused a boot failure; preserve needed data before resetting anything.
+
+### Android 10+, ARM64, or building a new translator
+
+This repository has no package for Android 10+ and no ARM64 translator. It also does not contain the engine source needed to build a new version. Third-party projects mentioned in historical issues have their own compatibility and licensing constraints; their existence does not establish support here.
+
+## Integrity and maintenance
+
+From the repository root, with Python 3:
+
+```sh
+python3 scripts/verify_packages.py
+```
+
+This checks the exact package inventory, SHA-256 hashes and ZIP CRCs without extracting or executing package contents. On macOS/Linux, hashes can also be checked with `shasum -a 256 -c SHA256SUMS`; on Linux, `sha256sum -c SHA256SUMS` is another option. These checks detect changes relative to this repository's baseline; they do not establish upstream authenticity, licensing or emulator compatibility.
+
+For a deliberate package update, review the source and redistribution terms, run `python3 scripts/verify_packages.py --write-checksums`, review the resulting diff, then run verification again. CI never regenerates hashes automatically.
+
+Before opening an issue, search [existing reports](https://github.com/m9rco/Genymotion_ARM_Translation/issues) and include the host CPU/OS, Genymotion version, Android image/version, package filename and hash, device ABI output, APK ABI list, reproduction steps and relevant logs. Remove private information from logs before sharing.
+
+## License and provenance
+
+The repository includes an [MIT license](LICENSE). Bundled third-party translation binaries retain their owners' rights; the repository license does not establish that those binaries are MIT-licensed. Genymotion identifies ARM translation libraries as Intel property. Known provenance and audit limits are recorded in [the package audit](docs/package-audit.md).
