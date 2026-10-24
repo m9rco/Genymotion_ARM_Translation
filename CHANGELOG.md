@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-24 — GitHub Pages download center
+
+- Added a responsive static download site generated from the existing package catalog and checksum files.
+- Added version search, package filters, SHA-256 copying and installation links; missing versions remain visibly unavailable.
+- Added GitHub Actions to test/build pull requests and deploy Pages only from master. ZIPs remain in repository/Releases, outside the Pages artifact.
+
 ## 2026-10-24 — additional version packages
 
 - Added real historical Android 4.3 and 5.0 ZIPs with source attribution and hashes.
