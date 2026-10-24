@@ -45,4 +45,4 @@ When intentionally updating package contents, first review provenance, redistrib
 
 ## Subsequent Android 11 integration
 
-The separate [experimental Android 11 ARM64 profile](android11-arm64.md) pins an external release; it is not one of the six legacy ZIPs audited above and is not added to `SHA256SUMS`. Its profile tracks complete-payload and core ELF hashes. Runtime evidence is tracked separately in the [acceptance procedure](arm64-runtime-validation.md).
+The separate [experimental Android 11 ARM64 profile](android11-arm64.md) pins the upstream release used in the [downloadable offline package](../package/README.md); it is not one of the six legacy ZIPs audited above and is not added to `SHA256SUMS`. Its profile tracks complete-payload and core ELF hashes. Runtime evidence is tracked separately in the [acceptance procedure](arm64-runtime-validation.md).

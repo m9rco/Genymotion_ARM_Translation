@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-24 — downloadable Android 11 package
+
+- Published a complete offline ZIP with the unchanged Android 11 ARM64/ARMv7 payload, configuration tools, checksums and short installation instructions.
+- Added direct download links to the READMEs and package directory. No runtime compatibility status has changed.
+
 ## 2026-10-24 — recovery and diagnostic maintenance
 
 - Failed property apply/restore now rolls back to each file's state immediately before the operation, including a previously patched or mixed state. Recovery no longer always writes the initial unpatched backup.
