@@ -1,0 +1,64 @@
+{
+  "id": "libndk-android12-14-arm64-experimental",
+  "status": "experimental-runtime-unverified",
+  "android_sdks": [
+    31,
+    32,
+    33,
+    34
+  ],
+  "guest_arch": "x86_64",
+  "app_abis": [
+    "arm64-v8a"
+  ],
+  "native_bridge": "libndk_translation.so",
+  "managed_properties": {
+    "ro.product.cpu.abilist": "x86_64,x86,arm64-v8a",
+    "ro.product.cpu.abilist32": "x86",
+    "ro.product.cpu.abilist64": "x86_64,arm64-v8a",
+    "ro.system.product.cpu.abilist": "x86_64,x86,arm64-v8a",
+    "ro.system.product.cpu.abilist32": "x86",
+    "ro.system.product.cpu.abilist64": "x86_64,arm64-v8a",
+    "ro.vendor.product.cpu.abilist": "x86_64,x86,arm64-v8a",
+    "ro.vendor.product.cpu.abilist32": "x86",
+    "ro.vendor.product.cpu.abilist64": "x86_64,arm64-v8a",
+    "ro.odm.product.cpu.abilist": "x86_64,x86,arm64-v8a",
+    "ro.odm.product.cpu.abilist32": "x86",
+    "ro.odm.product.cpu.abilist64": "x86_64,arm64-v8a",
+    "ro.dalvik.vm.native.bridge": "libndk_translation.so",
+    "ro.dalvik.vm.isa.arm64": "x86_64",
+    "ro.enable.native.bridge.exec": "1",
+    "ro.enable.native.bridge.exec64": "1"
+  },
+  "url": "https://github.com/m9rco/Genymotion_ARM_Translation/raw/master/package/android12-14/system.zip",
+  "size_bytes": 8691102,
+  "sha256": "16beefcc4f1315fd4b4c7b7fcd5dd0df88ad6f2c0f0e141fc8aea94f3f9670a0",
+  "elf_files": {
+    "system/lib64/libndk_translation.so": {
+      "class": 2,
+      "machine": 62,
+      "sha256": "c05f2b7ef51d3c855576ae53c25f7511d0490695ca1bf6b16269627be6dbdb51"
+    },
+    "system/bin/arm64/linker64": {
+      "class": 2,
+      "machine": 183,
+      "sha256": "aceb204d6454f764bb134aba33dc13e3145e6b0f78545d207edd1efe1048f42a"
+    },
+    "system/bin/ndk_translation_program_runner_binfmt_misc_arm64": {
+      "class": 2,
+      "machine": 62,
+      "sha256": "4413d1c1163179aa033d7e981e026e0142704f18f4c2d3612713fe022f824bc6"
+    }
+  },
+  "source": {
+    "repository": "https://github.com/zhouziyang/libndk_translation",
+    "commit": "c2093bd678eb493ea0f918e01ab76c0695a54c3c",
+    "path": "libndk_translation-12.0.0.tar",
+    "sha256": "5764ba796aeb14a52ac9150d1a11d1a0a8889cf42591f54bac9b8aa3ac99efa6",
+    "version_aliases": "Upstream Android 13 and 14 files are symlinks to the Android 12 payload, not distinct builds.",
+    "omitted_members": [
+      "system/lib/libnb.so"
+    ]
+  },
+  "license_note": "Third-party prebuilt binaries retain their owners rights; no translator engine source or new runtime certification is provided."
+}

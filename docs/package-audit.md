@@ -12,7 +12,7 @@ Its SHA-256 was:
 4959cb7dd43d239951ceb993f5abddd472faed3ae38e35452368375093d03b52
 ```
 
-The invalid file was removed from the current tree and download table. It remains recoverable in Git history. No replacement package or Android 4.3 support is claimed.
+The invalid file was removed from the current tree and download table. It remains recoverable in Git history. No replacement was available at the initial audit. A different historical ZIP was subsequently added as recorded below; it is not a runtime certification.
 
 ## Retained packages
 
@@ -46,3 +46,9 @@ When intentionally updating package contents, first review provenance, redistrib
 ## Subsequent Android 11 integration
 
 The separate [experimental Android 11 ARM64 profile](android11-arm64.md) pins the upstream release used in the [downloadable offline package](../package/README.md); it is not one of the six legacy ZIPs audited above and is not added to `SHA256SUMS`. Its profile tracks complete-payload and core ELF hashes. Runtime evidence is tracked separately in the [acceptance procedure](arm64-runtime-validation.md).
+
+## Additional packages — 2026-10-24
+
+The invalid 46,204-byte 4.3 HTML file has not been restored. A different, real historical 4.3 ZIP (13,959,459 bytes, SHA-256 `f31b54513da541766ad4c780aecfac9d7246da967af9b534c1e4746f52ecb127`) and a 5.0/API 21 ZIP (28,683,945 bytes, SHA-256 `7fd69ffaf0bd5f5be2d68af0589bf66530162534ce594aafb5592310e9f9472f`) were obtained from [louisgeek/Genymotion-ARM-Translation at 6fb00c8](https://github.com/louisgeek/Genymotion-ARM-Translation/tree/6fb00c88414d0d75ca8ac4acbc4ce45c25c7ff70). Their ZIP CRCs and x86 core Houdini ELF headers pass. File labels are historical source labels, not new runtime certifications.
+
+The Android 12–14 payload source, original tar hash, omitted dangling ARM32 symlink and core ELF hashes are recorded in [its profile](../config/libndk-android12-14-arm64.json). Every retained regular-file byte and symlink target was compared with the original tar. No engine binary was modified, and no independent Android 13/14 engine is claimed. The original six archives above remain unchanged.

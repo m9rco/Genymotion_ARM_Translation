@@ -22,6 +22,8 @@ jobs:
         run: python3 -m unittest discover -s scripts -p 'test_*.py' -v
       - name: Verify package hashes and ZIP integrity
         run: python3 scripts/verify_packages.py
+      - name: Verify Android 12-14 payload profile
+        run: python3 scripts/native_bridge.py check-payload package/android12-14/system.zip
       - name: Cross-compile the ARM64 execution probe (does not run it)
         shell: bash
         run: |

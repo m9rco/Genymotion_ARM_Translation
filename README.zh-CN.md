@@ -3,13 +3,13 @@
 **[直接下载 Android 11 ARM64/ARMv7 完整包](https://github.com/m9rco/Genymotion_ARM_Translation/releases/download/android11-arm64-package-20261024/Genymotion-ARM-Translation_for_11.0_x86_64_package.zip)** · [安装步骤](package/android11/INSTALL.md)
 
 
-本项目提供 Genymotion Desktop 的历史 x86/ARMv7 转译包，并新增 **Android 11 x86_64 → ARM64/ARMv7 实验性接入**。
+本项目提供 Genymotion Desktop 的历史 x86/ARMv7 转译包，并新增 **Android 11–14 x86_64 ARM64 实验性接入**（仅 Android 11 同时提供 ARMv7）。
 
 Intel/AMD 电脑运行 ARM64 应用，请使用[Android 11 接入指南](docs/android11-arm64.md)：包含固定哈希的外部包、配置及恢复脚本和[运行验收步骤](docs/arm64-runtime-validation.md)。真实设备运行验证尚未完成。下列历史 ZIP 仍仅面向 32 位应用。
 
 [English](README.md) · [ADB 使用说明](tools/adb.md) · [文件审计记录](docs/package-audit.md)
 
-[更新记录（2026-10-24）](CHANGELOG.md) · [版本支持与上游调研](docs/compatibility-status.md)
+[新增版本包下载](package/README.md) · [更新记录（2026-10-24）](CHANGELOG.md) · [版本支持与上游调研](docs/compatibility-status.md)
 
 ## 版本与适用范围
 
@@ -17,17 +17,19 @@ Intel/AMD 电脑运行 ARM64 应用，请使用[Android 11 接入指南](docs/an
 
 | Android 镜像 | 下载 | 状态 |
 | --- | --- | --- |
-| 4.3 | 暂无可用包 | 原文件是 HTML 网页，已移除，见[审计记录](docs/package-audit.md)。 |
+| 4.3 | [ZIP](package/Genymotion-ARM-Translation_for_4.3.zip?raw=true) | 已补充真实历史包，完整性通过，运行未验收 |
 | 4.4 | [ZIP](package/Genymotion-ARM-Translation_for_4.4.zip?raw=true) | 历史包，压缩包完整性通过 |
+| 5.0 | [ZIP](package/Genymotion-ARM-Translation_for_5.0.zip?raw=true) | 已补充历史 API 21 包，完整性通过 |
 | 5.1 | [ZIP](package/Genymotion-ARM-Translation_for_5.1.zip?raw=true) | 历史包，压缩包完整性通过 |
 | 6.0 | [ZIP](package/Genymotion-ARM-Translation_for_6.0.zip?raw=true) | 历史包，压缩包完整性通过 |
 | 7.x | [ZIP](package/Genymotion-ARM-Translation_for_7.X.zip?raw=true) | 历史包，压缩包完整性通过 |
 | 8.0 | [ZIP](package/Genymotion-ARM-Translation_for_8.0.zip?raw=true) | 历史包，压缩包完整性通过 |
 | 9.0 | [ZIP](package/Genymotion-ARM-Translation_for_9.0.zip?raw=true) | 历史包，压缩包完整性通过 |
 | 11 / API 30，x86_64 | [实验性 ARM64/ARMv7 接入](docs/android11-arm64.md) | 使用外部包，尚未验证真实运行 |
-| 10、12+ 及其他未列版本 | 暂无对应方案 | 不要跨 Android 版本刷入。 |
+| 12–14 / API 31–34，x86_64 | [ARM64 实验性完整包](https://github.com/m9rco/Genymotion_ARM_Translation/releases/download/additional-packages-20261024/Genymotion-ARM-Translation_for_12-14_x86_64_ARM64_experimental_package.zip) | 共用上游文件，仅 ARM64，运行未验收 |
+| 8.1、10、15+ 及其他未列版本 | 未取得对应包 | 不用其他版本冒充。 |
 
-本仓库没有专门的 5.0、7.1 或 8.1 包；`7.X` 的历史命名不代表验证过所有 7.x 镜像。[8.0 包用于 9.0 的反馈](https://github.com/m9rco/Genymotion_ARM_Translation/issues/26)存在差异，不能据此扩展兼容范围。
+7.0/7.1 共用历史 7.X 标签，没有独立的 7.1 构建；8.1 仍无对应包。`7.X` 的历史命名不代表验证过所有 7.x 镜像。[8.0 包用于 9.0 的反馈](https://github.com/m9rco/Genymotion_ARM_Translation/issues/26)存在差异，不能据此扩展兼容范围。
 
 Apple Silicon 使用的 ARM64 镜像不适用本项目的旧版 x86 刷包流程。只有 ARM64 原生库的应用，应使用兼容的 ARM64 设备或镜像，或获取匹配目标设备 ABI 的 APK。请以 [Genymotion 当前 ABI 文档](https://docs.genymotion.com/usage/desktop/install_apps/#supported-abis)及 [SaaS 部署文档](https://docs.genymotion.com/usage/saas/deploy_apps/)为准。
 
@@ -65,7 +67,7 @@ unzip -Z1 "application.apk" | awk -F/ '$1 == "lib" && NF >= 3 {print $2}' | sort
 
 **安装后闪退**：在复现后运行 `adb -s SERIAL logcat -d > genymotion-logcat.txt`，检查原生崩溃、缺失库、图形要求和 root 检测等原因。ABI 匹配不等于运行兼容。刷入后无法启动时可重建测试设备；重置前先保留所需数据。
 
-**Android 10+、ARM64 或自行编译**：新增的[Android 11 x86_64 实验性接入](docs/android11-arm64.md)使用哈希固定的外部第三方包，提供 ARM64/ARMv7 配置工具，真实运行验收待完成。Android 10 和 Android 12+ 暂无对应方案；本仓库也没有可构建新转译引擎的源码。
+**Android 10+、ARM64 或自行编译**：新增的[Android 11 x86_64 实验性接入](docs/android11-arm64.md)使用哈希固定的外部第三方包，提供 ARM64/ARMv7 配置工具，真实运行验收待完成。另新增 [Android 12–14 ARM64 实验包](package/android12-14/INSTALL.md)；8.1、10 和 15+ 暂无对应包；本仓库也没有可构建新转译引擎的源码。
 
 ## 完整性检查与维护
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Bundle the verified Android 11 payload and offline configuration tools."""
+"""Bundle a verified native bridge payload and offline configuration tools."""
 
 import argparse
 import hashlib
@@ -15,17 +15,23 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--payload', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--profile', type=Path, default=PROFILE)
+    parser.add_argument('--install-guide', type=Path, default=ROOT / 'package/android11/INSTALL.md')
+    parser.add_argument('--notices', type=Path, default=ROOT / 'package/android11/THIRD_PARTY_NOTICES.md')
     args = parser.parse_args()
     try:
-        validate_payload(args.payload, json.loads(PROFILE.read_text(encoding='utf-8')))
+        profile = json.loads(args.profile.read_text(encoding='utf-8'))
+        validate_payload(args.payload, profile)
         files = {
             'system.zip': args.payload,
             'scripts/android11_arm64.py': ROOT / 'scripts/android11_arm64.py',
-            'config/android11-arm64.json': PROFILE,
+            'config/' + args.profile.name: args.profile,
             'LICENSE': ROOT / 'LICENSE',
-            'INSTALL.md': ROOT / 'package/android11/INSTALL.md',
-            'THIRD_PARTY_NOTICES.md': ROOT / 'package/android11/THIRD_PARTY_NOTICES.md',
+            'INSTALL.md': args.install_guide,
+            'THIRD_PARTY_NOTICES.md': args.notices,
         }
+        if profile.get('native_bridge') == 'libndk_translation.so':
+            files['scripts/native_bridge.py'] = ROOT / 'scripts/native_bridge.py'
         hashes = {name: sha256(path) for name, path in files.items()}
         with zipfile.ZipFile(args.output, 'x', compression=zipfile.ZIP_STORED) as bundle:
             for name, path in files.items():

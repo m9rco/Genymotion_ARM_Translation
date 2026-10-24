@@ -4,11 +4,11 @@ Reviewed on **2026-10-24**. A source project's version claim is distinct from a 
 
 | Guest Android / architecture | This repository | Validation |
 | --- | --- | --- |
-| 4.3 | No usable package | Previous HTML download removed |
+| 4.3, 5.0 | Historical replacement/addition in package/ | Real ZIPs, core ELF/CRC/SHA-256 checked; runtime unverified |
 | 4.4, 5.1, 6.0, 7.X, 8.0, 9.0 / legacy x86 | Preserved historical ARMv7 packages | SHA-256 and ZIP CRC checked; current runtime unverified |
-| 10 / API 29 | No profile | No matching package validated |
 | 11 / API 30 / x86_64 | [Experimental ARM64/ARMv7 integration](android11-arm64.md) | Payload/core ELF integrity and offline tooling tested; VM/runtime acceptance pending |
-| 12–15 / x86_64 | External candidates identified; no integrated profile | Requires independent payload/provenance review and per-image runtime acceptance |
+| 12–14 / API 31–34, x86_64 | [Shared ARM64-only experimental package](../package/android12-14/INSTALL.md) | Payload/core ELF integrity and tooling tested; runtime unverified |
+| 8.1, 10, 15+ | No matching package obtained | Explicitly missing in the [version catalog](../package/catalog.json) |
 | 16+ | No profile | Not investigated or validated |
 
 ## Android 11 upstream
@@ -21,7 +21,7 @@ A release metadata check does not replace downloading and hashing the asset. Use
 
 [naijun0403/genymotion-tools](https://github.com/naijun0403/genymotion-tools), reviewed at commit [`31dd162`](https://github.com/naijun0403/genymotion-tools/tree/31dd16203b4e9efbe28d92585ac82a94efd3675c), claims Android 12–15 integration. Its [`stuff/ndk.py`](https://github.com/naijun0403/genymotion-tools/blob/31dd16203b4e9efbe28d92585ac82a94efd3675c/stuff/ndk.py) selects the **same Android 12 tar payload** for all four versions. That mapping alone does not establish compatibility with each Genymotion image. The reviewed tree has no license file, so its implementation is not copied into this repository.
 
-The referenced payload project, [zhouziyang/libndk_translation](https://github.com/zhouziyang/libndk_translation/tree/c2093bd678eb493ea0f918e01ab76c0695a54c3c), documents prebuilts for Android 11–14 and extraction from Android Emulator images. Its reviewed tree also has no license/notice file establishing redistribution rights. This repository does not mirror these binaries or infer an Android 15 support guarantee from them.
+The referenced payload project, [zhouziyang/libndk_translation](https://github.com/zhouziyang/libndk_translation/tree/c2093bd678eb493ea0f918e01ab76c0695a54c3c), documents prebuilts for Android 11–14 and extraction from Android Emulator images. Its reviewed tree also has no license/notice file establishing redistribution rights. The shared Android 12–14 experimental package now includes a repacked copy of this pinned payload with source notices. It does not infer Android 15 support. The source contains a 64-bit bridge only; no ARMv7 support is advertised.
 
 Before adding a profile, record the exact source and hashes, inspect archive paths/symlinks/core ELF files, establish applicable use/redistribution terms, and run the [runtime acceptance procedure](arm64-runtime-validation.md) adapted to the exact Android image. Native bridge properties and payload layout may differ from the Android 11 Houdini profile; do not substitute a tarball into that tool.
 

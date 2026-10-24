@@ -81,6 +81,17 @@ class PackageVerificationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "missing core"):
             verifier.verify(write_checksums=True)
 
+    def test_nested_ndk_payload_is_in_inventory(self):
+        nested = self.root / 'package' / 'android12-14' / 'system.zip'
+        nested.parent.mkdir()
+        with zipfile.ZipFile(nested, 'w') as archive:
+            archive.writestr('system/lib64/libndk_translation.so', b'ndk-fixture')
+        with self.assertRaisesRegex(ValueError, 'unlisted'):
+            verifier.verify()
+        verifier.verify(write_checksums=True)
+        verifier.verify()
+        self.assertIn('package/android12-14/system.zip', self.checksums.read_text())
+
     def test_empty_inventory_fails(self):
         self.package.unlink()
         with self.assertRaisesRegex(ValueError, "no packages"):
