@@ -42,3 +42,7 @@ This update inspected local files only: ZIP structure/CRC, hashes, sizes and the
 Run `python3 scripts/verify_packages.py` from the repository root. The check fails for missing/unlisted packages, changed hashes, malformed checksum entries, invalid ZIP files or corrupt ZIP members. CI runs this check on pushes and pull requests.
 
 When intentionally updating package contents, first review provenance, redistribution terms and runtime evidence. Then run `python3 scripts/verify_packages.py --write-checksums`, review the checksum diff, and rerun the normal check. The writer validates every ZIP before replacing the checksum file.
+
+## Subsequent Android 11 integration
+
+The separate [experimental Android 11 ARM64 profile](android11-arm64.md) pins an external release; it is not one of the six legacy ZIPs audited above and is not added to `SHA256SUMS`. Its profile tracks complete-payload and core ELF hashes. Runtime evidence is tracked separately in the [acceptance procedure](arm64-runtime-validation.md).

@@ -1,6 +1,8 @@
 # Genymotion ARM Translation
 
-本项目保存用于 **Genymotion Desktop 旧版 x86 Android 镜像**的历史 ARM 转译包，面向 32 位 ARM 应用（`armeabi-v7a`），不提供 ARM64（`arm64-v8a`）转译能力。
+本项目提供 Genymotion Desktop 的历史 x86/ARMv7 转译包，并新增 **Android 11 x86_64 → ARM64/ARMv7 实验性接入**。
+
+Intel/AMD 电脑运行 ARM64 应用，请使用[Android 11 接入指南](docs/android11-arm64.md)：包含固定哈希的外部包、配置及恢复脚本和[运行验收步骤](docs/arm64-runtime-validation.md)。真实设备运行验证尚未完成。下列历史 ZIP 仍仅面向 32 位应用。
 
 [English](README.md) · [ADB 使用说明](tools/adb.md) · [文件审计记录](docs/package-audit.md)
 
@@ -17,7 +19,8 @@
 | 7.x | [ZIP](package/Genymotion-ARM-Translation_for_7.X.zip?raw=true) | 历史包，压缩包完整性通过 |
 | 8.0 | [ZIP](package/Genymotion-ARM-Translation_for_8.0.zip?raw=true) | 历史包，压缩包完整性通过 |
 | 9.0 | [ZIP](package/Genymotion-ARM-Translation_for_9.0.zip?raw=true) | 历史包，压缩包完整性通过 |
-| 其他版本，包括 10+ | 本仓库没有对应包 | 不要跨 Android 版本刷入。 |
+| 11 / API 30，x86_64 | [实验性 ARM64/ARMv7 接入](docs/android11-arm64.md) | 使用外部包，尚未验证真实运行 |
+| 10、12+ 及其他未列版本 | 暂无对应方案 | 不要跨 Android 版本刷入。 |
 
 本仓库没有专门的 5.0、7.1 或 8.1 包；`7.X` 的历史命名不代表验证过所有 7.x 镜像。[8.0 包用于 9.0 的反馈](https://github.com/m9rco/Genymotion_ARM_Translation/issues/26)存在差异，不能据此扩展兼容范围。
 
@@ -53,11 +56,11 @@ Apple Silicon 使用的 ARM64 镜像不适用本项目的旧版 x86 刷包流程
 unzip -Z1 "application.apk" | awk -F/ '$1 == "lib" && NF >= 3 {print $2}' | sort -u
 ```
 
-如果只有 `arm64-v8a`，本项目的 32 位包无法解决。分包安装需要检查整套 APK，尤其是 ABI 分包，不能只看 base APK。没有输出仅说明该 APK 没有常规 `lib/` 路径下的原生库，不保证兼容。ABI 的含义见 [Android 官方文档](https://developer.android.com/ndk/guides/abis)。
+如果只有 `arm64-v8a`，历史 32 位包无法解决；Android 11 x86_64 镜像可使用独立的[实验性 ARM64 接入](docs/android11-arm64.md)。分包安装需要检查整套 APK，尤其是 ABI 分包，不能只看 base APK。没有输出仅说明该 APK 没有常规 `lib/` 路径下的原生库，不保证兼容。ABI 的含义见 [Android 官方文档](https://developer.android.com/ndk/guides/abis)。
 
 **安装后闪退**：在复现后运行 `adb -s SERIAL logcat -d > genymotion-logcat.txt`，检查原生崩溃、缺失库、图形要求和 root 检测等原因。ABI 匹配不等于运行兼容。刷入后无法启动时可重建测试设备；重置前先保留所需数据。
 
-**Android 10+、ARM64 或自行编译**：本仓库没有相应包，也没有可用于构建新转译引擎的源码。历史 issue 中提及的第三方项目不代表本仓库支持或已验证。
+**Android 10+、ARM64 或自行编译**：新增的[Android 11 x86_64 实验性接入](docs/android11-arm64.md)使用哈希固定的外部第三方包，提供 ARM64/ARMv7 配置工具，真实运行验收待完成。Android 10 和 Android 12+ 暂无对应方案；本仓库也没有可构建新转译引擎的源码。
 
 ## 完整性检查与维护
 

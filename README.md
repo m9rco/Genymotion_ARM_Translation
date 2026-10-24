@@ -1,10 +1,12 @@
 # Genymotion ARM Translation
 
-Historical ARM translation packages for **legacy Genymotion Desktop x86 Android images**. These packages target 32-bit ARM applications (`armeabi-v7a`); they do not add ARM64 (`arm64-v8a`) support.
+ARM translation resources for Genymotion Desktop: preserved **legacy x86/ARMv7 packages** plus an **experimental Android 11 x86_64 → ARM64/ARMv7 integration**.
+
+For Intel/AMD hosts and ARM64 applications, start with the [Android 11 setup](docs/android11-arm64.md). It includes a pinned external payload, guarded configuration/restore scripts and a [runtime acceptance procedure](docs/arm64-runtime-validation.md). Real-device runtime validation is pending. The legacy ZIPs below remain 32-bit only.
 
 [简体中文](README.zh-CN.md) · [ADB guide](tools/adb.md) · [Package audit](docs/package-audit.md)
 
-## Scope and compatibility
+## Legacy packages and compatibility
 
 This repository preserves prebuilt packages, not the translation engine's source code or a reproducible build system. Package names indicate their intended Android versions, **not a current compatibility certification**. No emulator runtime validation was performed for the 2026-10-24 maintenance update.
 
@@ -17,7 +19,8 @@ This repository preserves prebuilt packages, not the translation engine's source
 | 7.x | [Download ZIP](package/Genymotion-ARM-Translation_for_7.X.zip?raw=true) | Legacy; archive integrity checked |
 | 8.0 | [Download ZIP](package/Genymotion-ARM-Translation_for_8.0.zip?raw=true) | Legacy; archive integrity checked |
 | 9.0 | [Download ZIP](package/Genymotion-ARM-Translation_for_9.0.zip?raw=true) | Legacy; archive integrity checked |
-| Other versions, including 10+ | No package in this repository | Do not flash a package for a different Android version. |
+| 11 / API 30, x86_64 | [Experimental ARM64/ARMv7 integration](docs/android11-arm64.md) | External payload; runtime unverified |
+| 10, 12+ and other unlisted versions | No matching integration | Do not flash a package for a different Android version. |
 
 There are no dedicated 5.0, 7.1 or 8.1 packages here; the historical `7.X` label does not establish validation on every 7.x image. Use the named package only with an appropriate disposable legacy image. Reports about using the 8.0 package on 9.0 are mixed ([#12](https://github.com/m9rco/Genymotion_ARM_Translation/issues/12), [#26](https://github.com/m9rco/Genymotion_ARM_Translation/issues/26)); they do not extend the supported range.
 
@@ -73,7 +76,7 @@ Compare the device properties above with the APK's native library directories:
 unzip -Z1 "application.apk" | awk -F/ '$1 == "lib" && NF >= 3 {print $2}' | sort -u
 ```
 
-An APK containing only `arm64-v8a` libraries cannot use these 32-bit packages. For split APK installs, inspect **all** APKs in the split set, including the ABI split; the base APK alone can be misleading. No `lib/` output only means no conventional native libraries were found in that APK, not guaranteed compatibility.
+An APK containing only `arm64-v8a` libraries cannot use the legacy 32-bit packages. On an Android 11 x86_64 Genymotion guest, see the separate [experimental ARM64 integration](docs/android11-arm64.md). For split APK installs, inspect **all** APKs in the split set, including the ABI split; the base APK alone can be misleading. No `lib/` output only means no conventional native libraries were found in that APK, not guaranteed compatibility.
 
 ### Installation succeeds but the app crashes
 
@@ -87,7 +90,7 @@ Check for native crashes, missing libraries, graphics requirements and root dete
 
 ### Android 10+, ARM64, or building a new translator
 
-This repository has no package for Android 10+ and no ARM64 translator. It also does not contain the engine source needed to build a new version. Third-party projects mentioned in historical issues have their own compatibility and licensing constraints; their existence does not establish support here.
+Android 11 x86_64 now has a separate [experimental ARM64/ARMv7 integration](docs/android11-arm64.md) using an external, hash-pinned third-party payload. Runtime validation is pending. Android 10 and Android 12+ have no matching profile here. This repository does not contain the translator engine source needed to build new engine versions.
 
 ## Integrity and maintenance
 
