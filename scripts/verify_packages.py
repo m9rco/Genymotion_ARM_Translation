@@ -10,7 +10,7 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 CHECKSUMS = ROOT / "SHA256SUMS"
-ENTRY = re.compile(r"([0-9a-f]{64})  (package/[A-Za-z0-9_.-]+\.zip)")
+ENTRY = re.compile(r"([0-9a-f]{64})  (package/(?:[A-Za-z0-9_-][A-Za-z0-9_.-]*/)*[A-Za-z0-9_-][A-Za-z0-9_.-]*\.zip)")
 
 
 def package_hash(path):
@@ -28,12 +28,12 @@ def check_archive(path):
         broken = archive.testzip()
         if broken is not None:
             raise ValueError(f"{path.name}: corrupt member {broken}")
-        if "system/lib/libhoudini.so" not in archive.namelist():
+        if not {'system/lib/libhoudini.so', 'system/lib64/libndk_translation.so'}.intersection(archive.namelist()):
             raise ValueError(f"{path.name}: missing core translation library")
 
 
 def verify(write_checksums=False):
-    packages = sorted((ROOT / "package").glob("*.zip"))
+    packages = sorted((ROOT / "package").rglob("*.zip"))
     if not packages:
         raise ValueError("no packages found")
     if any(not path.is_file() or path.is_symlink() for path in packages):

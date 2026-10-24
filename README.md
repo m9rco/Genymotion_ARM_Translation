@@ -3,13 +3,13 @@
 **[Download Android 11 ARM64/ARMv7 package](https://github.com/m9rco/Genymotion_ARM_Translation/releases/download/android11-arm64-package-20261024/Genymotion-ARM-Translation_for_11.0_x86_64_package.zip)** · [Installation](package/android11/INSTALL.md)
 
 
-ARM translation resources for Genymotion Desktop: preserved **legacy x86/ARMv7 packages** plus an **experimental Android 11 x86_64 → ARM64/ARMv7 integration**.
+ARM translation resources for Genymotion Desktop: preserved **legacy x86/ARMv7 packages** plus **experimental Android 11–14 x86_64 ARM64 integrations** (ARMv7 only in the Android 11 profile).
 
 For Intel/AMD hosts and ARM64 applications, start with the [Android 11 setup](docs/android11-arm64.md). It includes a pinned external payload, guarded configuration/restore scripts and a [runtime acceptance procedure](docs/arm64-runtime-validation.md). Real-device runtime validation is pending. The legacy ZIPs below remain 32-bit only.
 
 [简体中文](README.zh-CN.md) · [ADB guide](tools/adb.md) · [Package audit](docs/package-audit.md)
 
-[Latest changes — 2026-10-24](CHANGELOG.md) · [Compatibility and upstream status](docs/compatibility-status.md)
+[Additional package downloads](package/README.md) · [Latest changes — 2026-10-24](CHANGELOG.md) · [Compatibility and upstream status](docs/compatibility-status.md)
 
 ## Legacy packages and compatibility
 
@@ -17,17 +17,19 @@ This repository preserves prebuilt packages, not the translation engine's source
 
 | Android image | Package | Status |
 | --- | --- | --- |
-| 4.3 | Unavailable | Previous file was HTML, not a ZIP; see the [audit](docs/package-audit.md). |
+| 4.3 | [Download ZIP](package/Genymotion-ARM-Translation_for_4.3.zip?raw=true) | Replacement historical ZIP; integrity checked, runtime unverified |
 | 4.4 | [Download ZIP](package/Genymotion-ARM-Translation_for_4.4.zip?raw=true) | Legacy; archive integrity checked |
+| 5.0 | [Download ZIP](package/Genymotion-ARM-Translation_for_5.0.zip?raw=true) | Historical API 21 package; integrity checked |
 | 5.1 | [Download ZIP](package/Genymotion-ARM-Translation_for_5.1.zip?raw=true) | Legacy; archive integrity checked |
 | 6.0 | [Download ZIP](package/Genymotion-ARM-Translation_for_6.0.zip?raw=true) | Legacy; archive integrity checked |
 | 7.x | [Download ZIP](package/Genymotion-ARM-Translation_for_7.X.zip?raw=true) | Legacy; archive integrity checked |
 | 8.0 | [Download ZIP](package/Genymotion-ARM-Translation_for_8.0.zip?raw=true) | Legacy; archive integrity checked |
 | 9.0 | [Download ZIP](package/Genymotion-ARM-Translation_for_9.0.zip?raw=true) | Legacy; archive integrity checked |
 | 11 / API 30, x86_64 | [Experimental ARM64/ARMv7 integration](docs/android11-arm64.md) | External payload; runtime unverified |
-| 10, 12+ and other unlisted versions | No matching integration | Do not flash a package for a different Android version. |
+| 12–14 / API 31–34, x86_64 | [ARM64 experimental package](https://github.com/m9rco/Genymotion_ARM_Translation/releases/download/additional-packages-20261024/Genymotion-ARM-Translation_for_12-14_x86_64_ARM64_experimental_package.zip) | Shared upstream payload; ARM64 only; runtime unverified |
+| 8.1, 10, 15+ and other unlisted versions | No matching package obtained | Do not substitute another version. |
 
-There are no dedicated 5.0, 7.1 or 8.1 packages here; the historical `7.X` label does not establish validation on every 7.x image. Use the named package only with an appropriate disposable legacy image. Reports about using the 8.0 package on 9.0 are mixed ([#12](https://github.com/m9rco/Genymotion_ARM_Translation/issues/12), [#26](https://github.com/m9rco/Genymotion_ARM_Translation/issues/26)); they do not extend the supported range.
+There are no dedicated 7.1 or 8.1 builds here; the historical `7.X` label does not establish validation on every 7.x image. Use the named package only with an appropriate disposable legacy image. Reports about using the 8.0 package on 9.0 are mixed ([#12](https://github.com/m9rco/Genymotion_ARM_Translation/issues/12), [#26](https://github.com/m9rco/Genymotion_ARM_Translation/issues/26)); they do not extend the supported range.
 
 For current host/image ABI compatibility, consult the [Genymotion installation guide](https://docs.genymotion.com/usage/desktop/install_apps/#supported-abis). Apple Silicon uses ARM64 images and is outside this legacy x86 package workflow. For ARM64 applications, use a compatible ARM64 device/image, or obtain an APK built for the target device's ABI. See also [Genymotion SaaS deployment](https://docs.genymotion.com/usage/saas/deploy_apps/) and [Android ABI documentation](https://developer.android.com/ndk/guides/abis).
 
@@ -95,7 +97,7 @@ Check for native crashes, missing libraries, graphics requirements and root dete
 
 ### Android 10+, ARM64, or building a new translator
 
-Android 11 x86_64 now has a separate [experimental ARM64/ARMv7 integration](docs/android11-arm64.md) using an external, hash-pinned third-party payload. Runtime validation is pending. Android 10 and Android 12+ have no matching profile here. This repository does not contain the translator engine source needed to build new engine versions.
+Android 11 x86_64 now has a separate [experimental ARM64/ARMv7 integration](docs/android11-arm64.md) using an external, hash-pinned third-party payload. Runtime validation is pending. Android 12–14 has a separate [experimental ARM64 package](package/android12-14/INSTALL.md). Android 8.1, 10 and 15+ still have no matching package here. This repository does not contain the translator engine source needed to build new engine versions.
 
 ## Integrity and maintenance
 

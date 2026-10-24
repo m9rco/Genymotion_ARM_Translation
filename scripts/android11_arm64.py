@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Prepare an experimental Android 11 x86_64 ARM bridge; never flashes a device."""
+"""Prepare a pinned experimental x86_64 native bridge; never flashes a device."""
 
 import argparse
 import hashlib
@@ -51,29 +51,32 @@ def properties(text):
     return result
 
 
-def patch_properties(text):
+def patch_properties(text, managed=None):
     """Replace every managed occurrence, preserving unrelated lines and comments."""
+    managed = PROPERTIES if managed is None else managed
     if '\x00' in text:
         raise ValueError('NUL in property file')
     kept = []
     for line in text.splitlines():
         key = line.split('=', 1)[0].strip()
-        if line in (BEGIN, END) or key in PROPERTIES:
+        if line in (BEGIN, END) or key in managed:
             continue
         kept.append(line)
     return '\n'.join(kept).rstrip() + '\n\n' + BEGIN + '\n' + ''.join(
-        f'{key}={value}\n' for key, value in PROPERTIES.items()) + END + '\n'
+        f'{key}={value}\n' for key, value in managed.items()) + END + '\n'
 
 
-def validate_device(values, machine):
-    if values.get('ro.build.version.sdk') != '30' or machine != 'x86_64':
-        raise ValueError('requires Android 11 / API 30 with an x86_64 guest kernel')
+def validate_device(values, machine, profile=None):
+    profile = profile or {}
+    sdks = [str(sdk) for sdk in profile.get('android_sdks', [30])]
+    if values.get('ro.build.version.sdk') not in sdks or machine != 'x86_64':
+        raise ValueError(f'requires Android API {", ".join(sdks)} with an x86_64 guest kernel')
     if not values.get('ro.genymotion.version'):
         raise ValueError('missing Genymotion identity')
     if values.get('ro.product.cpu.abi') not in ('', None, 'x86_64'):
         raise ValueError('requires an x86_64 guest ABI, not ARM64 or 32-bit x86')
     bridge = values.get('ro.dalvik.vm.native.bridge', '')
-    if bridge not in ('', '0', 'libhoudini.so'):
+    if bridge not in ('', '0', profile.get('native_bridge', 'libhoudini.so')):
         raise ValueError(f'conflicting native bridge: {bridge}')
 
 
@@ -98,14 +101,14 @@ def validate_payload(path, profile):
                 raise ValueError(f'unexpected core ELF: {name}')
 
 
-def shell_script(records, core_hashes, restore=False):
+def shell_script(records, core_hashes, restore=False, sdk_versions=(30,)):
     """Generate guarded on-device scripts; no remount, flashing or reboot."""
     quote = shlex.quote
     lines = ['#!/system/bin/sh', 'set -eu', 'cd "$(dirname "$0")"',
              'die() { echo "$*" >&2; exit 1; }',
              'hash() { sha256sum "$1" | cut -d " " -f 1; }',
              '[ "$(id -u)" = 0 ] || die "Run as root"',
-             '[ "$(getprop ro.build.version.sdk)" = 30 ] || die "Android 11 required"',
+             f'case "$(getprop ro.build.version.sdk)" in {"|".join(str(int(sdk)) for sdk in sdk_versions)}) ;; *) die "Unsupported Android SDK";; esac',
              '[ "$(uname -m)" = x86_64 ] || die "x86_64 guest required"',
              '[ -n "$(getprop ro.genymotion.version)" ] || die "Genymotion required"']
     for index, record in enumerate(records):
@@ -151,12 +154,12 @@ def prepare(payload, system_prop, vendor_prop, output, profile):
     texts = [data.decode('utf-8') for data in originals]
     system_values = properties(texts[0])
     # Kernel architecture is checked again on-device before applying.
-    validate_device(system_values, 'x86_64')
+    validate_device(system_values, 'x86_64', profile)
     for text in texts:
         bridge = properties(text).get('ro.dalvik.vm.native.bridge', '')
-        if bridge not in ('', '0', 'libhoudini.so'):
+        if bridge not in ('', '0', profile.get('native_bridge', 'libhoudini.so')):
             raise ValueError('conflicting bridge in property file')
-    patched = [patch_properties(text).encode('utf-8') for text in texts]
+    patched = [patch_properties(text, profile.get('managed_properties')).encode('utf-8') for text in texts]
     output = Path(output)
     output.mkdir(mode=0o700, parents=True, exist_ok=False)
     records = []
@@ -169,8 +172,9 @@ def prepare(payload, system_prop, vendor_prop, output, profile):
             record[kind + '_sha256'] = hashlib.sha256(data).hexdigest()
         records.append(record)
     core = {'/' + name: info['sha256'] for name, info in profile['elf_files'].items()}
-    (output / 'apply.sh').write_text(shell_script(records, core), encoding='utf-8')
-    (output / 'restore-properties.sh').write_text(shell_script(records, core, restore=True), encoding='utf-8')
+    sdks = profile.get('android_sdks', [30])
+    (output / 'apply.sh').write_text(shell_script(records, core, sdk_versions=sdks), encoding='utf-8')
+    (output / 'restore-properties.sh').write_text(shell_script(records, core, restore=True, sdk_versions=sdks), encoding='utf-8')
     (output / 'manifest.json').write_text(json.dumps({
         'profile': profile['id'], 'status': 'experimental-runtime-unverified',
         'payload_sha256': profile['sha256'], 'properties': records,
@@ -182,10 +186,11 @@ def verify_device(adb, serial, profile):
     def shell(command):
         return subprocess.run([adb, '-s', serial, 'shell', command], check=True,
                               stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=30).stdout.strip()
+    managed = profile.get('managed_properties', PROPERTIES)
     values = {key: shell('getprop ' + key) for key in (
-        'ro.build.version.sdk', 'ro.genymotion.version', 'ro.product.cpu.abi', *PROPERTIES)}
-    validate_device(values, shell('uname -m'))
-    failures = [key for key, expected in PROPERTIES.items() if values[key] != expected]
+        'ro.build.version.sdk', 'ro.genymotion.version', 'ro.product.cpu.abi', *managed)}
+    validate_device(values, shell('uname -m'), profile)
+    failures = [key for key, expected in managed.items() if values[key] != expected]
     core_files = {}
     for name, expected in profile['elf_files'].items():
         result = {'expected_sha256': expected['sha256'], 'actual_sha256': None}
@@ -207,8 +212,9 @@ def verify_device(adb, serial, profile):
     return 1 if failures else 0
 
 
-def main():
+def main(default_profile=None):
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--profile', type=Path, default=default_profile or PROFILE)
     commands = parser.add_subparsers(dest='command', required=True)
     download = commands.add_parser('download', help='fetch and verify the pinned third-party ZIP')
     download.add_argument('--output', type=Path, required=True)
@@ -224,7 +230,7 @@ def main():
     verify.add_argument('--adb', default='adb')
     args = parser.parse_args()
     try:
-        profile = json.loads(PROFILE.read_text(encoding='utf-8'))
+        profile = json.loads(args.profile.read_text(encoding='utf-8'))
         if args.command == 'download':
             if args.output.exists():
                 raise ValueError('output already exists')

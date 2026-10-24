@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-24 — additional version packages
+
+- Added real historical Android 4.3 and 5.0 ZIPs with source attribution and hashes.
+- Added one shared Android 12–14 ARM64-only experimental payload and a complete offline package; upstream 13/14 files alias the Android 12 payload. No ARMv7 or runtime compatibility certification is claimed.
+- Added a complete package catalog, recursive package integrity checks, SDK/native-bridge isolation guards and direct download links.
+- Android 8.1, 10 and 15+ remain explicitly missing; no neighboring-version binaries are relabeled.
+
 ## 2026-10-24 — downloadable Android 11 package
 
 - Published a complete offline ZIP with the unchanged Android 11 ARM64/ARMv7 payload, configuration tools, checksums and short installation instructions.

@@ -1,0 +1,125 @@
+{
+  "reviewed": "2026-10-24",
+  "packages": [
+    {
+      "android": "4.3",
+      "status": "historical-unverified",
+      "path": "package/Genymotion-ARM-Translation_for_4.3.zip",
+      "sha256": "f31b54513da541766ad4c780aecfac9d7246da967af9b534c1e4746f52ecb127",
+      "label": "4.3"
+    },
+    {
+      "android": "4.4",
+      "status": "historical-unverified",
+      "path": "package/Genymotion-ARM-Translation_for_4.4.zip",
+      "sha256": "34507f556e1a74f9a1df4793b9c6c9d60cdcd3963eb441902a5636e5b4922842",
+      "label": "4.4"
+    },
+    {
+      "android": "5.0",
+      "status": "historical-unverified",
+      "path": "package/Genymotion-ARM-Translation_for_5.0.zip",
+      "sha256": "7fd69ffaf0bd5f5be2d68af0589bf66530162534ce594aafb5592310e9f9472f",
+      "label": "5.0"
+    },
+    {
+      "android": "5.1",
+      "status": "historical-unverified",
+      "path": "package/Genymotion-ARM-Translation_for_5.1.zip",
+      "sha256": "21181ecba727f3e1ad31835e3b49cebab22dc6a35d6ee8526011c7246795597c",
+      "label": "5.1"
+    },
+    {
+      "android": "6.0",
+      "status": "historical-unverified",
+      "path": "package/Genymotion-ARM-Translation_for_6.0.zip",
+      "sha256": "e1a5547e7f8a710749988a500767520d6f9ee3319019ce3cac334a9315914046",
+      "label": "6.0"
+    },
+    {
+      "android": "7.0",
+      "status": "historical-unverified",
+      "path": "package/Genymotion-ARM-Translation_for_7.X.zip",
+      "sha256": "5e3c1b6547f015e11b78dc408610a8a460dc74f906847d5ce1524a714df591f1",
+      "label": "7.X"
+    },
+    {
+      "android": "7.1",
+      "status": "historical-unverified",
+      "path": "package/Genymotion-ARM-Translation_for_7.X.zip",
+      "sha256": "5e3c1b6547f015e11b78dc408610a8a460dc74f906847d5ce1524a714df591f1",
+      "label": "7.X"
+    },
+    {
+      "android": "8.0",
+      "status": "historical-unverified",
+      "path": "package/Genymotion-ARM-Translation_for_8.0.zip",
+      "sha256": "b0aea6ff872ad69e6dea03b7b6b3e42c37133de41a5a71a82cc7237dfd047780",
+      "label": "8.0"
+    },
+    {
+      "android": "9.0",
+      "status": "historical-unverified",
+      "path": "package/Genymotion-ARM-Translation_for_9.0.zip",
+      "sha256": "411932503881cd3e873c29ec9c8dde61ffd85451efae015939fc72bc3f7ef7ab",
+      "label": "9.0"
+    },
+    {
+      "android": "8.1",
+      "status": "missing",
+      "reason": "No matching independent payload obtained; 8.0 is not relabeled as 8.1."
+    },
+    {
+      "android": "10",
+      "status": "missing",
+      "reason": "No matching payload obtained; 9.0 is not relabeled as 10."
+    },
+    {
+      "android": "11",
+      "status": "experimental-runtime-unverified",
+      "url": "https://github.com/m9rco/Genymotion_ARM_Translation/releases/download/android11-arm64-package-20261024/Genymotion-ARM-Translation_for_11.0_x86_64_package.zip"
+    },
+    {
+      "android": "12",
+      "status": "experimental-shared-payload-runtime-unverified",
+      "path": "package/android12-14/system.zip",
+      "url": "https://github.com/m9rco/Genymotion_ARM_Translation/releases/download/additional-packages-20261024/Genymotion-ARM-Translation_for_12-14_x86_64_ARM64_experimental_package.zip",
+      "profile": "config/libndk-android12-14-arm64.json",
+      "note": "Shared upstream Android 12 payload; 13/14 are upstream aliases, not independent builds."
+    },
+    {
+      "android": "12.1",
+      "status": "experimental-shared-payload-runtime-unverified",
+      "path": "package/android12-14/system.zip",
+      "url": "https://github.com/m9rco/Genymotion_ARM_Translation/releases/download/additional-packages-20261024/Genymotion-ARM-Translation_for_12-14_x86_64_ARM64_experimental_package.zip",
+      "profile": "config/libndk-android12-14-arm64.json",
+      "note": "Shared upstream Android 12 payload; 13/14 are upstream aliases, not independent builds."
+    },
+    {
+      "android": "13",
+      "status": "experimental-shared-payload-runtime-unverified",
+      "path": "package/android12-14/system.zip",
+      "url": "https://github.com/m9rco/Genymotion_ARM_Translation/releases/download/additional-packages-20261024/Genymotion-ARM-Translation_for_12-14_x86_64_ARM64_experimental_package.zip",
+      "profile": "config/libndk-android12-14-arm64.json",
+      "note": "Shared upstream Android 12 payload; 13/14 are upstream aliases, not independent builds."
+    },
+    {
+      "android": "14",
+      "status": "experimental-shared-payload-runtime-unverified",
+      "path": "package/android12-14/system.zip",
+      "url": "https://github.com/m9rco/Genymotion_ARM_Translation/releases/download/additional-packages-20261024/Genymotion-ARM-Translation_for_12-14_x86_64_ARM64_experimental_package.zip",
+      "profile": "config/libndk-android12-14-arm64.json",
+      "note": "Shared upstream Android 12 payload; 13/14 are upstream aliases, not independent builds."
+    },
+    {
+      "android": "15",
+      "status": "missing",
+      "reason": "No matching version-specific payload obtained; excluded from all profiles."
+    },
+    {
+      "android": "16+",
+      "status": "missing",
+      "reason": "No matching version-specific payload obtained; excluded from all profiles."
+    }
+  ]
+}

@@ -251,6 +251,35 @@ class Arm64Tests(unittest.TestCase):
                     self.assertIsNone(result['actual_sha256'])
                     self.assertTrue(result['error'])
 
+    def test_ndk_profile_version_and_bridge_guards(self):
+        profile = json.loads((bridge.ROOT / 'config/libndk-android12-14-arm64.json').read_text())
+        values = bridge.properties(SYSTEM)
+        for sdk in ('31', '32', '33', '34'):
+            bridge.validate_device(dict(values, **{'ro.build.version.sdk': sdk}), 'x86_64', profile)
+        for sdk in ('29', '30', '35', '36'):
+            with self.assertRaises(ValueError):
+                bridge.validate_device(dict(values, **{'ro.build.version.sdk': sdk}), 'x86_64', profile)
+        with self.assertRaisesRegex(ValueError, 'conflicting'):
+            bridge.validate_device(dict(values, **{'ro.build.version.sdk': '31', 'ro.dalvik.vm.native.bridge': 'libhoudini.so'}), 'x86_64', profile)
+        patched = bridge.patch_properties(SYSTEM, profile['managed_properties'])
+        self.assertNotIn('armeabi-v7a', patched)
+        self.assertEqual(bridge.properties(patched)['ro.dalvik.vm.native.bridge'], 'libndk_translation.so')
+        self.assertEqual(patched, bridge.patch_properties(patched, profile['managed_properties']))
+
+    def test_generated_sdk_gate_rejects_other_versions_before_writes(self):
+        records, env = self.shell_fixture()
+        script = self.root / 'ndk-apply.sh'
+        script.write_text(bridge.shell_script(records, {}, sdk_versions=(31, 32, 33, 34)))
+        result = subprocess.run(['/bin/sh', str(script)], env=env, capture_output=True, text=True)
+        self.assertNotEqual(result.returncode, 0)
+        for record in records:
+            self.assertEqual(bridge.sha256(record['target']), record['original_sha256'])
+        getprop = self.root / 'bin' / 'getprop'
+        getprop.write_text('#!/bin/sh\ncase "$1" in ro.build.version.sdk) echo 31;; ro.genymotion.version) echo 3.6.0;; esac\n')
+        result = subprocess.run(['/bin/sh', str(script)], env=env, capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+
+
 
 if __name__ == '__main__':
     unittest.main()
