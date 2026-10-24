@@ -1,161 +1,79 @@
-`adb` 全称`Android Debug Bridge` ，安卓调试桥接器。它是Android SDK里面的一个工具，用这个工具可以直接操作管理Android模拟器或者真实Android设备。adb的工作方式比较特殊采用监听Socket TCP 5554等端口的方式让IDE和Qemu通讯，默认情况下adb会daemon相关的网络端口，所以当我们运行eclipse时adb进程就会自动运行。
+# ADB for Genymotion troubleshooting / ADB 使用说明
 
-1. adb devices
+ADB (Android Debug Bridge) is part of Android SDK Platform Tools. Its client talks to a local server (normally TCP port 5037), which communicates with device daemons. See the [official ADB guide](https://developer.android.com/tools/adb).
 
-主要作用：查看当前已连接的设备，连接到计算机的Android设备或者模拟器将会以列表的形式显示。
+ADB 是 Android SDK Platform Tools 中的调试工具。通常无需使用 `sudo`。以下示例中的 `SERIAL` 必须替换为目标设备序列号，避免多设备时操作错误。
 
-输出格式：[serialNumber][state]
+## Install / 安装
 
-  如果当前没有模拟器或者设备运行，adb则会返回List of devices attached为空
+Download [SDK Platform Tools](https://developer.android.com/tools/releases/platform-tools) for Windows, macOS or Linux and add its directory to `PATH`. Alternatively, install through Android Studio's SDK Manager.
 
- offline：表明设备没有连接到计算机或无响应
- device：设备已经连接到计算机。注意，该状态并不表示Android设备可用，当Android设备处于启动阶段时，若连接成功也会返回该状态。
+On macOS with Homebrew:
 
-2. adb install <apk文件路径>
-
-主要作用：将指定的apk文件安装到设备上，<apk文件路径>可以从本地文件夹拖动到终端中。
-
-常用参数：
-```
-adb install –r 覆盖安装
-
-adb install –s 安装到SD卡
-
-adb install –rs覆盖安装到SD卡
-
-adb –s <serial number> install 选定设备安装
+```sh
+brew install --cask android-platform-tools
+adb version
 ```
 
-当有多个设备连接时，可以用下面的命令来直接选定设备进行安装。
-```
-adb [-d|-e|-s <serial number>] install <path_to_apk>
+Genymotion can use bundled ADB or a custom Android SDK path. Check [Genymotion settings](https://docs.genymotion.com/usage/desktop/settings/) if command-line ADB cannot see the device. Avoid running conflicting ADB versions.
 
-d：真机（多个设备中只有一个真机时适用）
+## Select a device / 选择设备
 
-e：模拟器（多个设备中只有一个模拟器时适用）
-
-s：序列号
-
-adb –d install ./test.apk
-
-adb –s emulator-5556 install ./test.apk
+```sh
+adb devices -l
+adb -s SERIAL get-state
+adb -s SERIAL shell getprop sys.boot_completed
 ```
 
-3. adb uninstall <包名>
+`device` means the ADB connection is ready, not necessarily that Android has finished booting; `sys.boot_completed` normally becomes `1` after startup. `offline` means ADB cannot communicate normally. For `unauthorized`, accept the debugging prompt if the device presents one.
 
-主要作用：卸载设备上的指定程序
+## Inspect version and ABI / 读取版本与架构
 
-查看包名路径：/data/app，系统安装包路径：/sys/data，这两个路径下文件的查看都需要root权限
-```
-adb uninstall –k <包名>
-adb shell pm uninstall –k <包名>
-```
-
-卸载程序但是保留其配置和缓存文件，即/data/data/packname下的数据与/sdcard/程序名 的数据
-
-
-4. adb push/pull
-
-主要作用：复制文件
-
-1）adb push <本地路径><设备路径>
-
-把pc上的文件或文件夹复制到设备中。
-```
-adb push /home/test.apk /sdcard/
+```sh
+adb -s SERIAL shell getprop ro.build.version.release
+adb -s SERIAL shell getprop ro.build.version.sdk
+adb -s SERIAL shell getprop ro.product.cpu.abi
+adb -s SERIAL shell getprop ro.product.cpu.abi2
+adb -s SERIAL shell getprop ro.product.cpu.abilist
+adb -s SERIAL shell getprop ro.dalvik.vm.native.bridge
 ```
 
-2）adb pull <设备路径><本地路径>
+Old images may not expose every property. ABI properties advertise capabilities; they do not prove a translator or an app works. See [Android ABIs](https://developer.android.com/ndk/guides/abis).
 
-把设备上的文件或文件夹复制到电脑
+旧镜像部分属性可能为空。系统声明支持某个 ABI，不等于应用已通过运行验证。
 
-```
-adb pull /sdcard/log/test.xls /home/
-```
+## Install apps and copy files / 安装应用与传输文件
 
-Pull命令后可不输入本地地址，不输入时文件会复制到当前终端所在目录
-
-5. 关闭和启动adb服务
-
-```
-sudo –s
-
-adb kill-server  //关闭adb服务
-adb start-server //启动adb服务
+```sh
+adb -s SERIAL install "application.apk"
+adb -s SERIAL install -r "application.apk"
+adb -s SERIAL install-multiple "base.apk" "split_config.armeabi_v7a.apk"
+adb -s SERIAL push "local-file.zip" /sdcard/Download/
+adb -s SERIAL pull /sdcard/Download/device-file.txt ./device-file.txt
 ```
 
-6. sudo –i和sudo –s的区别
+`install -r` replaces an existing app while keeping its data when installation is permitted. Split APKs must belong to the same app/version and form a complete set for the device; the filenames above are examples, not a universal split list. Inspect native libraries in every relevant APK.
 
-```
-sudo –i：在root用户下，使用root权限执行adb命令
-sudo –s：在当前用户下，使用root权限执行adb命令
-```
+`adb install` installs APKs; it does **not** flash a translation ZIP. Follow the [repository installation guide](../README.md#install-on-a-legacy-x86-image) for ZIP packages.
 
-7. adb logcat
+## Capture logs / 收集日志
 
-主要作用：查看日志，在命令行中显示调试信息
-
-```
-adb logcat >> <指定文件路径>   将logcat信息保存在指定文件中
-adb logcat –help：查看logcat命令帮助文档
-adb logcat -s NET 查看网络通信信息
+```sh
+adb -s SERIAL logcat -d > genymotion-logcat.txt
+adb -s SERIAL logcat '*:W'
+adb -s SERIAL shell pm path com.example.app
 ```
 
-每一条日志消息都有一个标记和优先级与其关联。
+Reproduce the problem before capturing logs. Quote `*:W` so your shell does not expand the wildcard. Review logs for private information before sharing.
 
-格式为：<priority>/<tag>
+## Restart / 重启
 
-过滤不同优先级的log：adb logcat *:W（过滤比W优先级低的log）
-
-标记是一个简短的字符串，用于标识原始消息的来源（例如“View”来源于显示系统）。
-
-优先级是下面的字符，顺序从低到高：
-
-* V—Verbose 明细（最低优先级）
-* D—Debug 调试
-* I—Info 信息
-* W—Warm 警告
-* E—Error 错误
-* F—Fatal 严重错误
-* S—Silent 无记载（最高优先级，没有什么会被记载）
-
-建议配合Eclipse使用，查看logcat
-
-8. adb shell
-
-由于Android是基于Linux内核的操作系统。因此，在Android上可以执行shell命令。
-
-常用命令如下：
-
-```
-adb shell <command>    直接运行设备命令
-adb shell su –c “<command>”    直接运行root权限命令
+```sh
+adb -s SERIAL reboot
 ```
 
-9. adb shell am
+If the local ADB server itself is stuck, `adb kill-server` followed by `adb start-server` restarts it. This affects **all** local ADB sessions; coordinate with other device work first. Rebooting does not factory-reset the device.
 
-```
-am start –n <包名>/<包名>.<Activity名>   启动程序
-am force-stop <包名>    强制停止程序
-am kill <包名> 杀死与包名有关的后台进程，不影响用户体验，相当于一般的清理内存功能
-am kill-all    杀死所有后台进程
-```
+## Legacy certificate helper / 历史证书脚本
 
-10. adb shell pm
-
-```
-pm path <包名>   查看apk安装在手机后的路径
-pm uninstall [-k] <包名>  卸载程序（-k：保留配置文件）
-pm clear <包名>    清除应用缓存数据
-```
-
-11. 其他常用命令
-
-````
-adb help    显示帮助信息
-adb version   显示adb版本
-adb reboot    重启手机
-adb shell am broadcast -a android.intent.action.MASTER_CLEAR（恢复出厂）
-adb shell dumpsys window | grep init 查看手机的分辨率
-adb logcat -s ActivityManager        Activity的启动时间
-```
+`install-ssl.sh` is an unrelated legacy system-certificate helper, not an ARM translation installer. It assumes an old writable `/system`, BusyBox and a specific block device, and is not validated for current images. Do not use it as part of this installation procedure.
