@@ -1,5 +1,8 @@
 # Genymotion ARM Translation
 
+**[直接下载 Android 11 ARM64/ARMv7 完整包](https://github.com/m9rco/Genymotion_ARM_Translation/releases/download/android11-arm64-package-20261024/Genymotion-ARM-Translation_for_11.0_x86_64_package.zip)** · [安装步骤](package/android11/INSTALL.md)
+
+
 本项目提供 Genymotion Desktop 的历史 x86/ARMv7 转译包，并新增 **Android 11 x86_64 → ARM64/ARMv7 实验性接入**。
 
 Intel/AMD 电脑运行 ARM64 应用，请使用[Android 11 接入指南](docs/android11-arm64.md)：包含固定哈希的外部包、配置及恢复脚本和[运行验收步骤](docs/arm64-runtime-validation.md)。真实设备运行验证尚未完成。下列历史 ZIP 仍仅面向 32 位应用。

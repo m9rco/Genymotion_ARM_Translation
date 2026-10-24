@@ -1,6 +1,6 @@
 # Experimental Android 11 ARM64 bridge
 
-[中文操作摘要](#中文操作摘要)
+[Download the complete offline package](../package/README.md) · [Short installation guide](../package/android11/INSTALL.md) · [中文操作摘要](#中文操作摘要)
 
 This integration targets **Genymotion Desktop Android 11 / API 30, x86_64 guests on Intel/AMD hosts**. It prepares the third-party Houdini 1.0 payload and guarded property patches for ARMv7 and ARM64 applications. It is experimental: offline integration tests pass, but this project has not flashed a device or run an ARM64 application with it. Upstream reports include both working apps and crashes. CPU brand alone does not guarantee compatibility.
 
@@ -16,7 +16,7 @@ fc1896c7f85965fb8b6030fa60cefc24eadb5140528647842626c11f526f1361  system.zip
 
 The archive has 689 entries and passed CRC checks on 2026-10-24. Its libraries include ELF32 x86 and ELF64 x86_64 translators and ARM32/ARM64 linkers. This establishes file structure, not runtime compatibility or authenticity. A replaced release asset fails verification rather than silently updating the baseline.
 
-The upstream repository declares MIT; this does not establish redistribution rights for all included Intel/Android binaries. This repository does not mirror or relicense that payload. Review upstream terms before downloading or using it.
+The upstream repository declares MIT; this does not establish redistribution rights for all included Intel/Android binaries. The downloadable package bundles that payload unchanged with its source and rights notice; it does not relicense the binaries. Review upstream terms before downloading or using it.
 
 ## 1. Prepare a disposable test device
 

@@ -1,5 +1,8 @@
 # Genymotion ARM Translation
 
+**[Download Android 11 ARM64/ARMv7 package](https://github.com/m9rco/Genymotion_ARM_Translation/releases/download/android11-arm64-package-20261024/Genymotion-ARM-Translation_for_11.0_x86_64_package.zip)** · [Installation](package/android11/INSTALL.md)
+
+
 ARM translation resources for Genymotion Desktop: preserved **legacy x86/ARMv7 packages** plus an **experimental Android 11 x86_64 → ARM64/ARMv7 integration**.
 
 For Intel/AMD hosts and ARM64 applications, start with the [Android 11 setup](docs/android11-arm64.md). It includes a pinned external payload, guarded configuration/restore scripts and a [runtime acceptance procedure](docs/arm64-runtime-validation.md). Real-device runtime validation is pending. The legacy ZIPs below remain 32-bit only.

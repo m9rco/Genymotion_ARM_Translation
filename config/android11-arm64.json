@@ -45,5 +45,5 @@
       "machine": 183
     }
   },
-  "license_note": "Upstream repository declares MIT; bundled third-party binary redistribution rights are not established. Download remains external."
+  "license_note": "Upstream repository declares MIT; bundled third-party binaries retain their owners rights. Distribution bundles preserve the unmodified payload and include third-party notices."
 }
