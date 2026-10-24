@@ -6,6 +6,8 @@ For Intel/AMD hosts and ARM64 applications, start with the [Android 11 setup](do
 
 [简体中文](README.zh-CN.md) · [ADB guide](tools/adb.md) · [Package audit](docs/package-audit.md)
 
+[Latest changes — 2026-10-24](CHANGELOG.md) · [Compatibility and upstream status](docs/compatibility-status.md)
+
 ## Legacy packages and compatibility
 
 This repository preserves prebuilt packages, not the translation engine's source code or a reproducible build system. Package names indicate their intended Android versions, **not a current compatibility certification**. No emulator runtime validation was performed for the 2026-10-24 maintenance update.

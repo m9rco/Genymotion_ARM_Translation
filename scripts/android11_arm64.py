@@ -108,25 +108,36 @@ def shell_script(records, core_hashes, restore=False):
              '[ "$(getprop ro.build.version.sdk)" = 30 ] || die "Android 11 required"',
              '[ "$(uname -m)" = x86_64 ] || die "x86_64 guest required"',
              '[ -n "$(getprop ro.genymotion.version)" ] || die "Genymotion required"']
-    for record in records:
+    for index, record in enumerate(records):
         for field in ('original', 'patched'):
             lines.append(f'[ "$(hash {quote(record[field])})" = {quote(record[field + "_sha256"])} ] || die "Bundle file changed"')
         target = quote(record['target'])
         lines += [f'current=$(hash {target})',
-                  f'[ "$current" = {record["original_sha256"]} ] || [ "$current" = {record["patched_sha256"]} ] || die "Device properties differ from this backup"']
+                  f'[ "$current" = {record["original_sha256"]} ] || [ "$current" = {record["patched_sha256"]} ] || die "Device properties differ from this backup"',
+                  f'before_hash_{index}=$current',
+                  f'if [ "$current" = {record["original_sha256"]} ]; then',
+                  f'  before_source_{index}={quote(record["original"])}',
+                  'else', f'  before_source_{index}={quote(record["patched"])}', 'fi',
+                  f'changed_{index}=0']
     if not restore:
         for target, digest in core_hashes.items():
             lines.append(f'[ "$(hash {quote(target)})" = {digest} ] || die "Flash the verified payload first"')
     # Both input files and both target files are validated before any target write.
     lines += ['rollback() {', '  failed=0']
-    for record in records:
-        lines.append(f'  cat {quote(record["original"])} > {quote(record["target"])} || failed=1')
-    lines += ['  [ "$failed" = 0 ] || echo "Property restore failed; use the host backup or recreate the device" >&2', '}',
+    for index, record in enumerate(records):
+        target = quote(record['target'])
+        lines += [f'  if [ "$changed_{index}" = 1 ]; then',
+                  f'    cat "$before_source_{index}" > {target} || failed=1',
+                  f'    [ "$(hash {target})" = "$before_hash_{index}" ] || failed=1', '  fi']
+    lines += ['  [ "$failed" = 0 ] || echo "Property rollback failed; use the host backup or recreate the device" >&2', '}',
               'committed=0', 'trap \'[ "$committed" = 1 ] || rollback\' EXIT',
               "trap 'exit 1' HUP INT TERM"]
-    for record in records:
+    for index, record in enumerate(records):
         source = record['original' if restore else 'patched']
-        lines.append(f'cat {quote(source)} > {quote(record["target"])}')
+        expected = record['original_sha256' if restore else 'patched_sha256']
+        lines += [f'if [ "$before_hash_{index}" != {expected} ]; then',
+                  f'  changed_{index}=1',
+                  f'  cat {quote(source)} > {quote(record["target"])}', 'fi']
     for record in records:
         expected = record['original_sha256' if restore else 'patched_sha256']
         lines.append(f'[ "$(hash {quote(record["target"])})" = {expected} ] || die "Write verification failed"')
@@ -175,11 +186,24 @@ def verify_device(adb, serial, profile):
         'ro.build.version.sdk', 'ro.genymotion.version', 'ro.product.cpu.abi', *PROPERTIES)}
     validate_device(values, shell('uname -m'))
     failures = [key for key, expected in PROPERTIES.items() if values[key] != expected]
+    core_files = {}
     for name, expected in profile['elf_files'].items():
-        if shell('sha256sum /' + name).split()[0] != expected['sha256']:
+        result = {'expected_sha256': expected['sha256'], 'actual_sha256': None}
+        try:
+            output = shell('sha256sum /' + name).split()
+            if not output or re.fullmatch(r'[0-9a-fA-F]{64}', output[0]) is None:
+                raise ValueError('sha256sum returned no valid digest')
+            result['actual_sha256'] = output[0].lower()
+            result['status'] = 'match' if result['actual_sha256'] == expected['sha256'] else 'mismatch'
+        except (subprocess.CalledProcessError, subprocess.TimeoutExpired, ValueError) as error:
+            result['status'] = 'error'
+            result['error'] = str(getattr(error, 'stderr', '') or error).strip()
+        core_files[name] = result
+        if result['status'] != 'match':
             failures.append(name)
     print(json.dumps({'configuration_matches': not failures, 'failed_checks': failures,
-                      'runtime_tested': False, 'properties': values}, indent=2))
+                      'runtime_tested': False, 'properties': values,
+                      'core_files': core_files}, indent=2))
     return 1 if failures else 0
 
 

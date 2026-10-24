@@ -161,6 +161,28 @@ class Arm64Tests(unittest.TestCase):
         for record in records:
             self.assertEqual(bridge.sha256(record['target']), record['original_sha256'])
 
+    def test_failed_restore_preserves_previously_patched_state(self):
+        records, env = self.shell_fixture()
+        self.assertEqual(self.run_shell(records, env).returncode, 0)
+        cat = self.root / 'bin' / 'cat'
+        cat.write_text('#!/bin/sh\ncase "$1" in *vendor.original.prop) exit 1;; esac\nexec /bin/cat "$@"\n')
+        cat.chmod(0o755)
+        result = self.run_shell(records, env, restore=True)
+        self.assertNotEqual(result.returncode, 0)
+        for record in records:
+            self.assertEqual(bridge.sha256(record['target']), record['patched_sha256'])
+
+    def test_reapply_does_not_rewrite_already_patched_files(self):
+        records, env = self.shell_fixture()
+        self.assertEqual(self.run_shell(records, env).returncode, 0)
+        cat = self.root / 'bin' / 'cat'
+        cat.write_text('#!/bin/sh\nexit 1\n')
+        cat.chmod(0o755)
+        result = self.run_shell(records, env)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        for record in records:
+            self.assertEqual(bridge.sha256(record['target']), record['patched_sha256'])
+
     def test_download_validation_failure_leaves_no_final_or_partial_file(self):
         destination = self.root / 'download.zip'
         profile = dict(self.profile, url='https://example.invalid/system.zip')
@@ -195,6 +217,39 @@ class Arm64Tests(unittest.TestCase):
             self.assertEqual(bridge.verify_device('adb', 'fixture-serial', self.profile), 0)
             values['ro.zygote'] = 'zygote64'
             self.assertEqual(bridge.verify_device('adb', 'fixture-serial', self.profile), 1)
+
+
+    def test_verifier_reports_missing_timed_out_and_malformed_core_files(self):
+        values = dict(bridge.properties(SYSTEM), **bridge.PROPERTIES)
+        for failure in ('missing', 'timeout', 'malformed'):
+            with self.subTest(failure=failure):
+                calls = []
+                def fake_run(args, **kwargs):
+                    command = args[-1]
+                    if command.startswith('getprop '):
+                        answer = values[command.split()[1]]
+                    elif command == 'uname -m':
+                        answer = 'x86_64'
+                    else:
+                        calls.append(command)
+                        if failure == 'missing':
+                            raise subprocess.CalledProcessError(1, args, stderr='No such file')
+                        if failure == 'timeout':
+                            raise subprocess.TimeoutExpired(args, 30)
+                        answer = 'not-a-digest'
+                    return subprocess.CompletedProcess(args, 0, stdout=answer, stderr='')
+                output = io.StringIO()
+                with patch.object(bridge.subprocess, 'run', side_effect=fake_run), redirect_stdout(output):
+                    self.assertEqual(bridge.verify_device('adb', 'fixture', self.profile), 1)
+                report = json.loads(output.getvalue())
+                self.assertFalse(report['configuration_matches'])
+                self.assertFalse(report['runtime_tested'])
+                self.assertEqual(len(calls), len(self.profile['elf_files']))
+                self.assertEqual(set(report['failed_checks']), set(self.profile['elf_files']))
+                for result in report['core_files'].values():
+                    self.assertEqual(result['status'], 'error')
+                    self.assertIsNone(result['actual_sha256'])
+                    self.assertTrue(result['error'])
 
 
 if __name__ == '__main__':
