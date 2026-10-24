@@ -67,3 +67,6 @@ fastlane/readme.md
 # Python maintenance tools
 __pycache__/
 *.py[cod]
+
+# Local translation downloads, device backups and generated bundles
+/work/

@@ -1,0 +1,49 @@
+{
+  "id": "genymotion-android11-x86_64-houdini-1.0",
+  "status": "experimental-runtime-unverified",
+  "android_sdk": 30,
+  "guest_arch": "x86_64",
+  "app_abis": [
+    "armeabi-v7a",
+    "arm64-v8a"
+  ],
+  "upstream_repository": "https://github.com/niizam/Genymotion_A11_libhoudini",
+  "upstream_release": "1.0",
+  "upstream_asset_id": 94257456,
+  "url": "https://github.com/niizam/Genymotion_A11_libhoudini/releases/download/1.0/system.zip",
+  "size_bytes": 259372539,
+  "sha256": "fc1896c7f85965fb8b6030fa60cefc24eadb5140528647842626c11f526f1361",
+  "elf_files": {
+    "system/lib/libhoudini.so": {
+      "sha256": "6923cf03f1e5c03879ed69b2bc97fc06345803e1d0a1ca1cc0fe64ee7d682750",
+      "class": 1,
+      "machine": 3
+    },
+    "system/lib64/libhoudini.so": {
+      "sha256": "894844a3751ffa2c68fecbcd254dafa4c704a295d988a42852c62c1aa1ffdeb0",
+      "class": 2,
+      "machine": 62
+    },
+    "system/bin/houdini": {
+      "sha256": "1f5f732f9fd35a680467d9f6c561c48edb85b97e4e8dfdafd87d309e5dc6c062",
+      "class": 1,
+      "machine": 3
+    },
+    "system/bin/houdini64": {
+      "sha256": "d83c1d9817b7997145fefc2195907a03f02115aa3a5ef953dbd99f0713b6dece",
+      "class": 2,
+      "machine": 62
+    },
+    "system/bin/arm/linker": {
+      "sha256": "3c7a7424bf9621cdd2d427f7ed834d92c262487d1abedac4ea6941c806c85448",
+      "class": 1,
+      "machine": 40
+    },
+    "system/bin/arm64/linker64": {
+      "sha256": "46338babc644e5eedd4aef368d12554268601bfaf1070699e39ce770dd9b66c3",
+      "class": 2,
+      "machine": 183
+    }
+  },
+  "license_note": "Upstream repository declares MIT; bundled third-party binary redistribution rights are not established. Download remains external."
+}

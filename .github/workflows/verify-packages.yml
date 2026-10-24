@@ -18,7 +18,28 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Test verification failure paths
+      - name: Test package verification and Android 11 integration
         run: python3 -m unittest discover -s scripts -p 'test_*.py' -v
       - name: Verify package hashes and ZIP integrity
         run: python3 scripts/verify_packages.py
+      - name: Cross-compile the ARM64 execution probe (does not run it)
+        shell: bash
+        run: |
+          set -euo pipefail
+          toolchain="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin"
+          mkdir -p work/android11
+          "$toolchain/clang" --target=aarch64-linux-android30 -Wall -Wextra -Werror \
+            -O2 tests/arm64-smoke/main.c -o work/android11/arm64-smoke
+          "$toolchain/llvm-readelf" -h work/android11/arm64-smoke
+          python3 - <<'PY'
+          from pathlib import Path
+          import struct
+          data = Path('work/android11/arm64-smoke').read_bytes()
+          assert data[:6] == b'\x7fELF\x02\x01'
+          assert struct.unpack_from('<H', data, 18)[0] == 183
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: android11-arm64-smoke
+          path: work/android11/arm64-smoke
+          retention-days: 7
